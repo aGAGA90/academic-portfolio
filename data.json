@@ -3,11 +3,11 @@
     "title": "Ahmed GAGA",
     "subtitle": "Professor in Electronics, Automatic & Embedded Systems",
     "description": "Dedicated to advancing education and research in digital electronics, FPGA architectures, and modern control systems.",
-    "imgUrl": "/uploads/1777833368823-GAGA.jpg"
+    "imgUrl": "uploads/1778419142670-GAGA.jpg"
   },
   "about": {
     "biography": "sanae elouahdani, I am a passionate Professor specializing in Electronics, Automation, and Embedded Systems.\n\nWith over a decade of experience in academia and applied research, my focus lies in bridging the gap between theoretical electronics and practical, real-world embedded applications.\n\nMy mission is to educate the next generation of engineers through hands-on learning, interactive labs, and comprehensive digital tools, while contributing to state-of-the-art research in FPGA-based control systems.",
-    "cvUrl": "#",
+    "cvUrl": "uploads/1778419382321-CV- GAGA-AHMED_francais_PH 2024.pdf",
     "skills": [
       {
         "name": "Embedded Systems (FPGA/MCU)",
@@ -33,47 +33,34 @@
   },
   "teaching": [
     {
-      "title": "Digital Electronics",
+      "title": "Electronique Numerique",
       "icon": "bi-cpu",
       "desc": "Fundamentals of logic gates, Boolean algebra, combinational and sequential circuit design.",
-      "materials": []
-    },
-    {
-      "title": "VHDL & FPGA Design",
-      "icon": "bi-motherboard",
-      "desc": "Advanced hardware description, synthesis, and implementation on Xilinx/Intel FPGAs.",
-      "materials": []
-    },
-    {
-      "title": "Embedded Systems",
-      "icon": "bi-memory",
-      "desc": "Microcontroller architectures (ARM, PIC), RTOS, and interfacing techniques.",
-      "materials": []
-    },
-    {
-      "title": "Instrumentation & Control",
-      "icon": "bi-sliders",
-      "desc": "Sensors, signal conditioning, PID controllers, and automated industrial systems.",
       "materials": [
         {
-          "name": "TP1 Final",
-          "url": "uploads/1777792482748-TP1_final_compteur_binaire_mod10_7segments_v2_updated.pdf"
+          "name": "New Document",
+          "url": "uploads/1778419185564-Cours electronique numerique_Final_ISE 2025_2026.pdf"
         },
         {
           "name": "New Document",
-          "url": "uploads/1777833334678-Liste absense Licence ISE 2025_2026_2.pdf"
+          "url": "uploads/1778419206067-TD electronique numerique_Final_ISE 2025_2026.pdf"
         },
         {
           "name": "New Document",
-          "url": "uploads/1777833346252-Liste absense Licence ISE 2025_2026_2.pdf"
+          "url": "uploads/1778419225925-TP electronique numerique_Final_ISE 2025_2026.pdf"
         }
       ]
     },
     {
-      "title": "qqqqqqqqqqq",
-      "icon": "bi-book",
-      "desc": "eeeeeeeeeeeeeeeeeeeeeeeeee",
-      "materials": []
+      "title": "Acquisition Systems",
+      "icon": "bi-sliders",
+      "desc": "Sensors, signal conditioning, PID controllers, and automated industrial systems.",
+      "materials": [
+        {
+          "name": "New Document",
+          "url": "uploads/1778419346355-TP3 ldr S6_Pr Ahmed Gaga.pdf"
+        }
+      ]
     }
   ],
   "research": {
