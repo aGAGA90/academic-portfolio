@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Prof. Ahmed Gaga</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { background-color: #f8f9fa; }
+        .sidebar { min-height: 100vh; background-color: #343a40; color: white; padding-top: 20px;}
+        .sidebar a { color: #adb5bd; text-decoration: none; padding: 10px 20px; display: block; }
+        .sidebar a:hover, .sidebar a.active { color: white; background-color: #495057; }
+        .content { padding: 20px; }
+        .card { box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; margin-bottom: 20px; }
+        .card-header { background-color: white; border-bottom: 1px solid #eee; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <!-- Warning message if opened directly from file system -->
+    <div id="file-protocol-warning" style="display: none; padding: 20px; text-align: center; background-color: #f8d7da; color: #842029; border-bottom: 1px solid #f5c2c7; font-family: sans-serif;">
+        <h4>⚠️ Server Not Running ⚠️</h4>
+        <p>You have opened this file directly from your computer (<code>file://</code>). The Admin dashboard cannot function this way.</p>
+        <p><strong>Please run the server using <code>npm start</code> in your terminal and open <a href="http://localhost:3000/admin.html">http://localhost:3000/admin.html</a> in your browser.</strong></p>
+    </div>
+
+    <script>
+        if (window.location.protocol === 'file:') {
+            document.getElementById('file-protocol-warning').style.display = 'block';
+        }
+    </script>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const AdminDashboard = () => {
+            const [data, setData] = useState(null);
+            const [loading, setLoading] = useState(true);
+            const [saving, setSaving] = useState(false);
+            const [activeTab, setActiveTab] = useState('hero');
+            const [message, setMessage] = useState(null);
+
+            useEffect(() => {
+                fetch('/api/data')
+                    .then(res => res.json())
+                    .then(fetchedData => {
+                        // Ensure optional arrays exist
+                        if (!fetchedData.academicProjects) fetchedData.academicProjects = [];
+                        if (!fetchedData.learningApplications) fetchedData.learningApplications = [];
+                        if (!fetchedData.supervisedPhd) fetchedData.supervisedPhd = [];
+                        if (!fetchedData.scientificEquipments) fetchedData.scientificEquipments = [];
+                        if (!fetchedData.embeddedBoards) fetchedData.embeddedBoards = [];
+                        if (!fetchedData.hero.imgUrl) fetchedData.hero.imgUrl = '';
+                        fetchedData.teaching.forEach(t => { if (!t.materials) t.materials = []; });
+                        
+                        setData(fetchedData);
+                        setLoading(false);
+                    });
+            }, []);
+
+            const handleSave = () => {
+                setSaving(true);
+                fetch('/api/data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(result => {
+                    setSaving(false);
+                    if (result.success) {
+                        setMessage({ type: 'success', text: 'Data saved successfully!' });
+                        setTimeout(() => setMessage(null), 3000);
+                    } else {
+                        setMessage({ type: 'danger', text: 'Failed to save data.' });
+                    }
+                });
+            };
+
+            const handleUpload = async (file, fieldPath) => {
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                try {
+                    const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        const newData = JSON.parse(JSON.stringify(data)); // Deep clone
+                        let current = newData;
+                        for (let i = 0; i < fieldPath.length - 1; i++) {
+                            current = current[fieldPath[i]];
+                        }
+                        current[fieldPath[fieldPath.length - 1]] = result.url;
+                        setData(newData);
+                        setMessage({ type: 'success', text: 'File uploaded successfully! Remember to save.' });
+                    }
+                } catch (error) {
+                    setMessage({ type: 'danger', text: 'File upload failed.' });
+                }
+            };
+
+            if (loading) return <div className="text-center mt-5"><div className="spinner-border text-primary"></div></div>;
+
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-2 sidebar">
+                            <h4 className="text-center mb-4">Admin Panel</h4>
+                            <a href="#" className={activeTab === 'hero' ? 'active' : ''} onClick={() => setActiveTab('hero')}><i className="bi bi-house me-2"></i> Hero</a>
+                            <a href="#" className={activeTab === 'about' ? 'active' : ''} onClick={() => setActiveTab('about')}><i className="bi bi-person me-2"></i> About & CV</a>
+                            <a href="#" className={activeTab === 'teaching' ? 'active' : ''} onClick={() => setActiveTab('teaching')}><i className="bi bi-book me-2"></i> Teaching</a>
+                            <a href="#" className={activeTab === 'research' ? 'active' : ''} onClick={() => setActiveTab('research')}><i className="bi bi-graph-up me-2"></i> Research</a>
+                            <a href="#" className={activeTab === 'publications' ? 'active' : ''} onClick={() => setActiveTab('publications')}><i className="bi bi-journal me-2"></i> Publications</a>
+                            <a href="#" className={activeTab === 'projects' ? 'active' : ''} onClick={() => setActiveTab('projects')}><i className="bi bi-briefcase me-2"></i> Showcase Projects</a>
+                            <a href="#" className={activeTab === 'academicProjects' ? 'active' : ''} onClick={() => setActiveTab('academicProjects')}><i className="bi bi-mortarboard me-2"></i> Academic Projects</a>
+                            <a href="#" className={activeTab === 'supervisedPhd' ? 'active' : ''} onClick={() => setActiveTab('supervisedPhd')}><i className="bi bi-person-badge me-2"></i> Supervised PhD</a>
+                            <a href="#" className={activeTab === 'scientificEquipments' ? 'active' : ''} onClick={() => setActiveTab('scientificEquipments')}><i className="bi bi-tools me-2"></i> Equipments</a>
+                            <a href="#" className={activeTab === 'embeddedBoards' ? 'active' : ''} onClick={() => setActiveTab('embeddedBoards')}><i className="bi bi-motherboard me-2"></i> Embedded Boards</a>
+                            <a href="#" className={activeTab === 'learningApplications' ? 'active' : ''} onClick={() => setActiveTab('learningApplications')}><i className="bi bi-laptop me-2"></i> Learning Apps</a>
+                            <a href="#" className={activeTab === 'contact' ? 'active' : ''} onClick={() => setActiveTab('contact')}><i className="bi bi-envelope me-2"></i> Contact & Social</a>
+                            <a href="/" target="_blank" className="mt-5 text-info"><i className="bi bi-arrow-up-right-square me-2"></i> View Site</a>
+                        </div>
+                        <div className="col-md-10 content">
+                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                <h2>Manage Content</h2>
+                                <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
+                                    {saving ? 'Saving...' : <><i className="bi bi-save me-2"></i> Save Changes</>}
+                                </button>
+                            </div>
+
+                            {message && (
+                                <div className={`alert alert-${message.type} alert-dismissible fade show`}>
+                                    {message.text}
+                                    <button type="button" className="btn-close" onClick={() => setMessage(null)}></button>
+                                </div>
+                            )}
+
+                            {activeTab === 'hero' && (
+                                <div className="card">
+                                    <div className="card-header">Hero Section</div>
+                                    <div className="card-body">
+                                        <div className="mb-3">
+                                            <label className="form-label">Title</label>
+                                            <input type="text" className="form-control" value={data.hero.title} onChange={e => setData({...data, hero: {...data.hero, title: e.target.value}})} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Subtitle</label>
+                                            <input type="text" className="form-control" value={data.hero.subtitle} onChange={e => setData({...data, hero: {...data.hero, subtitle: e.target.value}})} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Description</label>
+                                            <textarea className="form-control" rows="4" value={data.hero.description} onChange={e => setData({...data, hero: {...data.hero, description: e.target.value}})}></textarea>
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Hero Profile Image</label>
+                                            <div className="d-flex align-items-center gap-3">
+                                                <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                    if (e.target.files[0]) handleUpload(e.target.files[0], ['hero', 'imgUrl']);
+                                                }} />
+                                                <input type="text" className="form-control" placeholder="Or paste image URL here" value={data.hero.imgUrl} onChange={e => setData({...data, hero: {...data.hero, imgUrl: e.target.value}})} />
+                                            </div>
+                                            {data.hero.imgUrl && <img src={data.hero.imgUrl} className="mt-2 rounded shadow-sm" style={{height: '100px'}} alt="Preview" />}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'about' && (
+                                <div className="card">
+                                    <div className="card-header">About Section</div>
+                                    <div className="card-body">
+                                        <div className="mb-3">
+                                            <label className="form-label">Biography</label>
+                                            <textarea className="form-control" rows="6" value={data.about.biography} onChange={e => setData({...data, about: {...data.about, biography: e.target.value}})}></textarea>
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">CV File (PDF)</label>
+                                            <div className="d-flex align-items-center gap-3">
+                                                <input type="file" className="form-control w-auto" accept=".pdf" onChange={e => {
+                                                    if (e.target.files[0]) handleUpload(e.target.files[0], ['about', 'cvUrl']);
+                                                }} />
+                                                {data.about.cvUrl !== '#' && <a href={data.about.cvUrl} target="_blank" className="btn btn-sm btn-outline-secondary">View Current CV</a>}
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <h5>Skills</h5>
+                                        {data.about.skills.map((skill, idx) => (
+                                            <div className="row mb-2" key={idx}>
+                                                <div className="col-md-6">
+                                                    <input type="text" className="form-control" value={skill.name} onChange={e => {
+                                                        const newSkills = [...data.about.skills];
+                                                        newSkills[idx].name = e.target.value;
+                                                        setData({...data, about: {...data.about, skills: newSkills}});
+                                                    }} placeholder="Skill Name" />
+                                                </div>
+                                                <div className="col-md-4">
+                                                    <input type="number" className="form-control" value={skill.level} onChange={e => {
+                                                        const newSkills = [...data.about.skills];
+                                                        newSkills[idx].level = parseInt(e.target.value);
+                                                        setData({...data, about: {...data.about, skills: newSkills}});
+                                                    }} placeholder="Level (0-100)" />
+                                                </div>
+                                                <div className="col-md-2">
+                                                    <button className="btn btn-danger w-100" onClick={() => {
+                                                        const newSkills = data.about.skills.filter((_, i) => i !== idx);
+                                                        setData({...data, about: {...data.about, skills: newSkills}});
+                                                    }}><i className="bi bi-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-sm btn-success mt-2" onClick={() => {
+                                            setData({...data, about: {...data.about, skills: [...data.about.skills, {name: '', level: 50}]}});
+                                        }}><i className="bi bi-plus"></i> Add Skill</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'teaching' && (
+                                <div className="card">
+                                    <div className="card-header">Teaching Section</div>
+                                    <div className="card-body">
+                                        {data.teaching.map((course, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm bg-light" key={idx}>
+                                                <div className="row g-2 mb-3">
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Course Title</label>
+                                                        <input type="text" className="form-control" value={course.title} onChange={e => {
+                                                            const newTeaching = [...data.teaching]; newTeaching[idx].title = e.target.value; setData({...data, teaching: newTeaching});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Icon Class (e.g. bi-cpu)</label>
+                                                        <input type="text" className="form-control" value={course.icon} onChange={e => {
+                                                            const newTeaching = [...data.teaching]; newTeaching[idx].icon = e.target.value; setData({...data, teaching: newTeaching});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Description</label>
+                                                        <textarea className="form-control" value={course.desc} onChange={e => {
+                                                            const newTeaching = [...data.teaching]; newTeaching[idx].desc = e.target.value; setData({...data, teaching: newTeaching});
+                                                        }}></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="border p-2 bg-white rounded">
+                                                    <h6 className="fw-bold">Course Materials (Documents, Exercises, etc.)</h6>
+                                                    {course.materials && course.materials.map((mat, mIdx) => (
+                                                        <div className="d-flex gap-2 mb-2" key={mIdx}>
+                                                            <input type="text" className="form-control form-control-sm" value={mat.name} placeholder="Material Name (e.g. TP1, Course PDF)" onChange={e => {
+                                                                const newTeaching = [...data.teaching];
+                                                                newTeaching[idx].materials[mIdx].name = e.target.value;
+                                                                setData({...data, teaching: newTeaching});
+                                                            }} />
+                                                            <input type="file" className="form-control form-control-sm w-auto" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['teaching', idx, 'materials', mIdx, 'url']);
+                                                            }} />
+                                                            {mat.url && <a href={mat.url} target="_blank" className="btn btn-sm btn-outline-secondary"><i className="bi bi-eye"></i></a>}
+                                                            <button className="btn btn-sm btn-danger" onClick={() => {
+                                                                const newTeaching = [...data.teaching];
+                                                                newTeaching[idx].materials = newTeaching[idx].materials.filter((_, i) => i !== mIdx);
+                                                                setData({...data, teaching: newTeaching});
+                                                            }}><i className="bi bi-trash"></i></button>
+                                                        </div>
+                                                    ))}
+                                                    <button className="btn btn-sm btn-outline-success mt-1" onClick={() => {
+                                                        const newTeaching = [...data.teaching];
+                                                        if (!newTeaching[idx].materials) newTeaching[idx].materials = [];
+                                                        newTeaching[idx].materials.push({name: 'New Document', url: ''});
+                                                        setData({...data, teaching: newTeaching});
+                                                    }}><i className="bi bi-plus"></i> Add Document</button>
+                                                </div>
+
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newTeaching = data.teaching.filter((_, i) => i !== idx); setData({...data, teaching: newTeaching});
+                                                }}><i className="bi bi-trash"></i> Remove Course</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, teaching: [...data.teaching, {title: '', icon: 'bi-book', desc: '', materials: []}]});
+                                        }}><i className="bi bi-plus"></i> Add New Course</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'research' && (
+                                <div className="card">
+                                    <div className="card-header">Research Section</div>
+                                    <div className="card-body">
+                                        <div className="row mb-4">
+                                            <div className="col-md-4">
+                                                <label className="form-label">h-index</label>
+                                                <input type="text" className="form-control" value={data.research.hIndex} onChange={e => setData({...data, research: {...data.research, hIndex: e.target.value}})} />
+                                            </div>
+                                            <div className="col-md-4">
+                                                <label className="form-label">Publications Count</label>
+                                                <input type="text" className="form-control" value={data.research.publicationsCount} onChange={e => setData({...data, research: {...data.research, publicationsCount: e.target.value}})} />
+                                            </div>
+                                            <div className="col-md-4">
+                                                <label className="form-label">Total Citations</label>
+                                                <input type="text" className="form-control" value={data.research.totalCitations} onChange={e => setData({...data, research: {...data.research, totalCitations: e.target.value}})} />
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <h5>Research Interests</h5>
+                                        {data.research.interests.map((interest, idx) => (
+                                            <div className="d-flex mb-2 gap-2" key={idx}>
+                                                <input type="text" className="form-control" value={interest} onChange={e => {
+                                                    const newInterests = [...data.research.interests];
+                                                    newInterests[idx] = e.target.value;
+                                                    setData({...data, research: {...data.research, interests: newInterests}});
+                                                }} />
+                                                <button className="btn btn-danger" onClick={() => {
+                                                    const newInterests = data.research.interests.filter((_, i) => i !== idx);
+                                                    setData({...data, research: {...data.research, interests: newInterests}});
+                                                }}><i className="bi bi-trash"></i></button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-sm btn-success mt-2" onClick={() => {
+                                            setData({...data, research: {...data.research, interests: [...data.research.interests, '']}});
+                                        }}><i className="bi bi-plus"></i> Add Interest</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'publications' && (
+                                <div className="card">
+                                    <div className="card-header">Selected Publications</div>
+                                    <div className="card-body">
+                                        {data.publications.map((pub, idx) => (
+                                            <div className="border p-3 mb-3 rounded" key={idx}>
+                                                <div className="row g-2">
+                                                    <div className="col-12">
+                                                        <label className="form-label">Title</label>
+                                                        <input type="text" className="form-control" value={pub.title} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].title = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label">Authors</label>
+                                                        <input type="text" className="form-control" value={pub.authors} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].authors = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label">Journal</label>
+                                                        <input type="text" className="form-control" value={pub.journal} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].journal = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Year</label>
+                                                        <input type="text" className="form-control" value={pub.year} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].year = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Quartile (e.g. Q1)</label>
+                                                        <input type="text" className="form-control" value={pub.quartile || ''} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].quartile = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                        <label className="form-label">Link (DOI)</label>
+                                                        <input type="text" className="form-control" value={pub.link} onChange={e => {
+                                                            const newPubs = [...data.publications]; newPubs[idx].link = e.target.value; setData({...data, publications: newPubs});
+                                                        }} />
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newPubs = data.publications.filter((_, i) => i !== idx); setData({...data, publications: newPubs});
+                                                }}><i className="bi bi-trash"></i> Remove Publication</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, publications: [...data.publications, {title: '', authors: '', journal: '', year: '', link: '', quartile: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add Publication</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'projects' && (
+                                <div className="card">
+                                    <div className="card-header">Showcase Projects</div>
+                                    <div className="card-body">
+                                        {data.projects.map((proj, idx) => (
+                                            <div className="border p-3 mb-3 rounded" key={idx}>
+                                                <div className="row g-2">
+                                                    <div className="col-md-6">
+                                                        <label className="form-label">Project Title</label>
+                                                        <input type="text" className="form-control" value={proj.title} onChange={e => {
+                                                            const newProj = [...data.projects]; newProj[idx].title = e.target.value; setData({...data, projects: newProj});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label">Tags (comma separated)</label>
+                                                        <input type="text" className="form-control" value={proj.tags ? proj.tags.join(', ') : ''} onChange={e => {
+                                                            const newProj = [...data.projects]; newProj[idx].tags = e.target.value.split(',').map(s=>s.trim()); setData({...data, projects: newProj});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label">Description</label>
+                                                        <textarea className="form-control" value={proj.desc} onChange={e => {
+                                                            const newProj = [...data.projects]; newProj[idx].desc = e.target.value; setData({...data, projects: newProj});
+                                                        }}></textarea>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label">Project Image URL</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={proj.img} onChange={e => {
+                                                                const newProj = [...data.projects]; newProj[idx].img = e.target.value; setData({...data, projects: newProj});
+                                                            }} />
+                                                            <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['projects', idx, 'img']);
+                                                            }} />
+                                                        </div>
+                                                        {proj.img && <img src={proj.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newProj = data.projects.filter((_, i) => i !== idx); setData({...data, projects: newProj});
+                                                }}><i className="bi bi-trash"></i> Remove Project</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, projects: [...data.projects, {title: '', desc: '', img: '', tags: []}]});
+                                        }}><i className="bi bi-plus"></i> Add Project</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'academicProjects' && (
+                                <div className="card">
+                                    <div className="card-header">Academic Projects (Licence, Master, Engineering)</div>
+                                    <div className="card-body">
+                                        {data.academicProjects.map((proj, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm" key={idx}>
+                                                <div className="row g-3">
+                                                    <div className="col-md-12">
+                                                        <label className="form-label fw-bold">Project Title</label>
+                                                        <input type="text" className="form-control" value={proj.title} onChange={e => {
+                                                            const newProj = [...data.academicProjects]; newProj[idx].title = e.target.value; setData({...data, academicProjects: newProj});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Level</label>
+                                                        <select className="form-select" value={proj.level || 'Master'} onChange={e => {
+                                                            const newProj = [...data.academicProjects]; newProj[idx].level = e.target.value; setData({...data, academicProjects: newProj});
+                                                        }}>
+                                                            <option value="Licence">Licence</option>
+                                                            <option value="Master">Master</option>
+                                                            <option value="Engineer">Engineer</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Year (Date)</label>
+                                                        <input type="date" className="form-control" value={proj.year || ''} onChange={e => {
+                                                            const newProj = [...data.academicProjects]; newProj[idx].year = e.target.value; setData({...data, academicProjects: newProj});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Description</label>
+                                                        <textarea className="form-control" rows="3" value={proj.desc} onChange={e => {
+                                                            const newProj = [...data.academicProjects]; newProj[idx].desc = e.target.value; setData({...data, academicProjects: newProj});
+                                                        }}></textarea>
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newProj = data.academicProjects.filter((_, i) => i !== idx); setData({...data, academicProjects: newProj});
+                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, academicProjects: [...data.academicProjects, {title: '', level: 'Master', year: '', desc: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add Academic Project</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'supervisedPhd' && (
+                                <div className="card">
+                                    <div className="card-header">Supervised PhD</div>
+                                    <div className="card-body">
+                                        {data.supervisedPhd.map((phd, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm" key={idx}>
+                                                <div className="row g-3">
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Candidate Name</label>
+                                                        <input type="text" className="form-control" value={phd.name} onChange={e => {
+                                                            const newPhd = [...data.supervisedPhd]; newPhd[idx].name = e.target.value; setData({...data, supervisedPhd: newPhd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Thesis Title</label>
+                                                        <input type="text" className="form-control" value={phd.title} onChange={e => {
+                                                            const newPhd = [...data.supervisedPhd]; newPhd[idx].title = e.target.value; setData({...data, supervisedPhd: newPhd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Starting Date</label>
+                                                        <input type="date" className="form-control" value={phd.startDate || ''} onChange={e => {
+                                                            const newPhd = [...data.supervisedPhd]; newPhd[idx].startDate = e.target.value; setData({...data, supervisedPhd: newPhd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Soutenance Date (Leave empty if in progress)</label>
+                                                        <input type="date" className="form-control" value={phd.soutenanceDate || ''} onChange={e => {
+                                                            const newPhd = [...data.supervisedPhd]; newPhd[idx].soutenanceDate = e.target.value; setData({...data, supervisedPhd: newPhd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Candidate Image URL</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={phd.img || ''} onChange={e => {
+                                                                const newPhd = [...data.supervisedPhd]; newPhd[idx].img = e.target.value; setData({...data, supervisedPhd: newPhd});
+                                                            }} />
+                                                            <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['supervisedPhd', idx, 'img']);
+                                                            }} />
+                                                        </div>
+                                                        {phd.img && <img src={phd.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newPhd = data.supervisedPhd.filter((_, i) => i !== idx); setData({...data, supervisedPhd: newPhd});
+                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, supervisedPhd: [...data.supervisedPhd, {name: '', title: '', startDate: '', soutenanceDate: '', img: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add PhD</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'scientificEquipments' && (
+                                <div className="card">
+                                    <div className="card-header">Scientific Equipments</div>
+                                    <div className="card-body">
+                                        {data.scientificEquipments.map((eq, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm" key={idx}>
+                                                <div className="row g-3">
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Equipment Name</label>
+                                                        <input type="text" className="form-control" value={eq.name} onChange={e => {
+                                                            const newEq = [...data.scientificEquipments]; newEq[idx].name = e.target.value; setData({...data, scientificEquipments: newEq});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Price</label>
+                                                        <input type="text" className="form-control" value={eq.price} onChange={e => {
+                                                            const newEq = [...data.scientificEquipments]; newEq[idx].price = e.target.value; setData({...data, scientificEquipments: newEq});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Description</label>
+                                                        <textarea className="form-control" rows="2" value={eq.desc} onChange={e => {
+                                                            const newEq = [...data.scientificEquipments]; newEq[idx].desc = e.target.value; setData({...data, scientificEquipments: newEq});
+                                                        }}></textarea>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Image URL</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={eq.img || ''} onChange={e => {
+                                                                const newEq = [...data.scientificEquipments]; newEq[idx].img = e.target.value; setData({...data, scientificEquipments: newEq});
+                                                            }} />
+                                                            <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['scientificEquipments', idx, 'img']);
+                                                            }} />
+                                                        </div>
+                                                        {eq.img && <img src={eq.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newEq = data.scientificEquipments.filter((_, i) => i !== idx); setData({...data, scientificEquipments: newEq});
+                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, scientificEquipments: [...data.scientificEquipments, {name: '', price: '', desc: '', img: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add Equipment</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'embeddedBoards' && (
+                                <div className="card">
+                                    <div className="card-header">Embedded Boards</div>
+                                    <div className="card-body">
+                                        {data.embeddedBoards.map((board, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm" key={idx}>
+                                                <div className="row g-3">
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Board Name</label>
+                                                        <input type="text" className="form-control" value={board.name} onChange={e => {
+                                                            const newBd = [...data.embeddedBoards]; newBd[idx].name = e.target.value; setData({...data, embeddedBoards: newBd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <label className="form-label fw-bold">Price</label>
+                                                        <input type="text" className="form-control" value={board.price} onChange={e => {
+                                                            const newBd = [...data.embeddedBoards]; newBd[idx].price = e.target.value; setData({...data, embeddedBoards: newBd});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Description</label>
+                                                        <textarea className="form-control" rows="2" value={board.desc} onChange={e => {
+                                                            const newBd = [...data.embeddedBoards]; newBd[idx].desc = e.target.value; setData({...data, embeddedBoards: newBd});
+                                                        }}></textarea>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Image URL</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={board.img || ''} onChange={e => {
+                                                                const newBd = [...data.embeddedBoards]; newBd[idx].img = e.target.value; setData({...data, embeddedBoards: newBd});
+                                                            }} />
+                                                            <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['embeddedBoards', idx, 'img']);
+                                                            }} />
+                                                        </div>
+                                                        {board.img && <img src={board.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newBd = data.embeddedBoards.filter((_, i) => i !== idx); setData({...data, embeddedBoards: newBd});
+                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, embeddedBoards: [...data.embeddedBoards, {name: '', price: '', desc: '', img: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add Board</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'learningApplications' && (
+                                <div className="card">
+                                    <div className="card-header">Learning Applications</div>
+                                    <div className="card-body">
+                                        <div className="alert alert-info">
+                                            Add learning applications. You can paste HTML, CSS, and JS (via standard HTML tags) which will be embedded on a dedicated page when users click it in the navbar.
+                                        </div>
+                                        {data.learningApplications.map((app, idx) => (
+                                            <div className="border p-3 mb-3 rounded" key={idx}>
+                                                <div className="row g-2">
+                                                    <div className="col-md-12">
+                                                        <label className="form-label fw-bold">Application Name</label>
+                                                        <input type="text" className="form-control" value={app.name} onChange={e => {
+                                                            const newApps = [...data.learningApplications]; newApps[idx].name = e.target.value; setData({...data, learningApplications: newApps});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">HTML Code</label>
+                                                        <textarea className="form-control font-monospace" rows="8" value={app.htmlCode} onChange={e => {
+                                                            const newApps = [...data.learningApplications]; newApps[idx].htmlCode = e.target.value; setData({...data, learningApplications: newApps});
+                                                        }}></textarea>
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                    const newApps = data.learningApplications.filter((_, i) => i !== idx); setData({...data, learningApplications: newApps});
+                                                }}><i className="bi bi-trash"></i> Remove Application</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, learningApplications: [...data.learningApplications, {name: 'New Application', htmlCode: '<div>Your Code Here</div>'}]});
+                                        }}><i className="bi bi-plus"></i> Add Learning Application</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'contact' && (
+                                <div className="card">
+                                    <div className="card-header">Contact & Social Media</div>
+                                    <div className="card-body">
+                                        <div className="row g-3 mb-4">
+                                            <div className="col-md-6">
+                                                <label className="form-label">Contact Email</label>
+                                                <input type="email" className="form-control" value={data.contact.email} onChange={e => setData({...data, contact: {...data.contact, email: e.target.value}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label">Location</label>
+                                                <input type="text" className="form-control" value={data.contact.location} onChange={e => setData({...data, contact: {...data.contact, location: e.target.value}})} />
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <h5>Social Links</h5>
+                                        <div className="row g-3">
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-linkedin text-primary me-2"></i> LinkedIn</label>
+                                                <input type="text" className="form-control" value={data.contact.social.linkedin} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, linkedin: e.target.value}}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-youtube text-danger me-2"></i> YouTube</label>
+                                                <input type="text" className="form-control" value={data.contact.social.youtube} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, youtube: e.target.value}}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-github text-dark me-2"></i> GitHub</label>
+                                                <input type="text" className="form-control" value={data.contact.social.github} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, github: e.target.value}}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-globe text-success me-2"></i> ORCID</label>
+                                                <input type="text" className="form-control" value={data.contact.social.orcid} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, orcid: e.target.value}}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-journal-text text-primary me-2"></i> Scopus</label>
+                                                <input type="text" className="form-control" value={data.contact.social.scopus} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, scopus: e.target.value}}})} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label"><i className="bi bi-google text-danger me-2"></i> Google Scholar</label>
+                                                <input type="text" className="form-control" value={data.contact.social.googleScholar} onChange={e => setData({...data, contact: {...data.contact, social: {...data.contact.social, googleScholar: e.target.value}}})} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<AdminDashboard />);
+    </script>
+</body>
+</html>
