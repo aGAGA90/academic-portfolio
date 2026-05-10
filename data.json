@@ -38,16 +38,16 @@
       "desc": "Fundamentals of logic gates, Boolean algebra, combinational and sequential circuit design.",
       "materials": [
         {
-          "name": "New Document",
-          "url": "uploads/1778419185564-Cours electronique numerique_Final_ISE 2025_2026.pdf"
+          "name": "Cours",
+          "url": "uploads/1778422208070-Cours electronique numerique_Final_ISE 2025_2026.pdf"
         },
         {
-          "name": "New Document",
-          "url": "uploads/1778419206067-TD electronique numerique_Final_ISE 2025_2026.pdf"
+          "name": "Travaux Diriges",
+          "url": "uploads/1778422215157-TD electronique numerique_Final_ISE 2025_2026.pdf"
         },
         {
-          "name": "New Document",
-          "url": "uploads/1778419225925-TP electronique numerique_Final_ISE 2025_2026.pdf"
+          "name": "Travaux Pratique",
+          "url": "uploads/1778422220809-TP electronique numerique_Ver4_ahmed SMP_ISE 2025_2026.pdf"
         }
       ]
     },
@@ -57,7 +57,7 @@
       "desc": "Sensors, signal conditioning, PID controllers, and automated industrial systems.",
       "materials": [
         {
-          "name": "New Document",
+          "name": "TP3",
           "url": "uploads/1778419346355-TP3 ldr S6_Pr Ahmed Gaga.pdf"
         }
       ]
