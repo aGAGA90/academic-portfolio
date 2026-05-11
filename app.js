@@ -2,13 +2,13 @@ const { useState, useEffect, useRef, useMemo } = React;
 
 const translations = {
   en: {
-    phd: "My supervised Phd", equip: "Scientific Equipements", boards: "Embedded Boards", home: "Home", about: "About", teaching: "Teaching", research: "Research", publications: "Publications", projects: "Projects", academicProjects: "Academic Projects", learningApps: "Learning Apps", contact: "Contact", search: "Search...", viewResearch: "View Research", contactMe: "Contact Me", bio: "Biography", cv: "Download CV", expertise: "Areas of Expertise", courses: "Courses, laboratories, and educational resources", showMoreCourses: "Show More Courses", viewMaterials: "View Materials", hideMaterials: "Hide Materials", interests: "Research Interests", pubs: "Selected Publications", viewPaper: "View Paper", showMorePubs: "Show More Publications", showcase: "Showcase Projects", showMoreProj: "Show More Projects", dirProj: "Directed projects for Licence, Master, and Engineering", sortBy: "Sort By", date: "Date / Year", level: "Level", name: "Project Name", asc: "Ascending", desc: "Descending", showMoreAcad: "Show More Academic Projects", docCandidates: "Doctoral candidates under my supervision", completed: "Completed", inProgress: "In Progress", start: "Start", defense: "Defense", tools: "Laboratory tools and measurement devices", devBoards: "Development boards and microcontrollers", interact: "Interactive educational web applications", launch: "Launch App", getInTouch: "Get In Touch", info: "Contact Information", email: "Email", loc: "Location", follow: "Follow Me", sendMsg: "Send a Message", subj: "Subject", msg: "Message", send: "Send Message", back: "Back to Home", backPort: "Back to Portfolio", all: "All", noMatch: "No matches found for", tryAdj: "Try adjusting your search terms"
+    phd: "My supervised Phd", equip: "Scientific Equipements", boards: "Embedded Boards", home: "Home", about: "About", teaching: "Teaching", research: "Research", publications: "Publications", projects: "Projects", academicProjects: "Academic Projects", learningApps: "Learning Apps", contact: "Contact", search: "Search...", viewResearch: "View Research", contactMe: "Contact Me", bio: "Biography", cv: "Download CV", expertise: "Areas of Expertise", courses: "Courses, laboratories, and educational resources", showMoreCourses: "Show More Courses", viewMaterials: "View Materials", hideMaterials: "Hide Materials", interests: "Research Interests", pubs: "Selected Publications", viewPaper: "View Paper", showMorePubs: "Show More Publications", showcase: "Showcase Projects", showMoreProj: "Show More Projects", dirProj: "Directed projects for Licence, Master, and Engineering", sortBy: "Sort By", date: "Date / Year", level: "Level", name: "Project Name", asc: "Ascending", desc: "Descending", showMoreAcad: "Show More Academic Projects", docCandidates: "Doctoral candidates under my supervision", completed: "Completed", inProgress: "In Progress", start: "Start", defense: "Defense", tools: "Laboratory tools and measurement devices", devBoards: "Development boards and microcontrollers", interact: "Interactive educational web applications", launch: "Launch App", getInTouch: "Get In Touch", info: "Contact Information", email: "Email", loc: "Location", follow: "Follow Me", sendMsg: "Send a Message", subj: "Subject", msg: "Message", send: "Send Message", back: "Back to Home", backPort: "Back to Portfolio", all: "All", noMatch: "No matches found for", tryAdj: "Try adjusting your search terms", authors: "Authors", quartile: "Quartile", filter: "Filter", allQuartiles: "All Quartiles", allYears: "All Years", exportCsv: "Export CSV", allLevels: "All Levels"
   },
   fr: {
-    phd: "Mes doctorants", equip: "Équipements", boards: "Cartes embarquées", home: "Accueil", about: "À propos", teaching: "Enseignement", research: "Recherche", publications: "Publications", projects: "Projets", academicProjects: "Projets Dirigés", learningApps: "Apps Éducatives", contact: "Contact", search: "Chercher...", viewResearch: "Voir la recherche", contactMe: "Me contacter", bio: "Biographie", cv: "Télécharger CV", expertise: "Domaines d'expertise", courses: "Cours, laboratoires et ressources", showMoreCourses: "Voir plus de cours", viewMaterials: "Voir les documents", hideMaterials: "Cacher", interests: "Intérêts de recherche", pubs: "Publications", viewPaper: "Voir l'article", showMorePubs: "Voir plus", showcase: "Projets", showMoreProj: "Voir plus", dirProj: "Projets dirigés pour Licence, Master et Ingénieur", sortBy: "Trier par", date: "Date / Année", level: "Niveau", name: "Nom du projet", asc: "Croissant", desc: "Décroissant", showMoreAcad: "Voir plus", docCandidates: "Doctorants sous ma direction", completed: "Terminé", inProgress: "En cours", start: "Début", defense: "Soutenance", tools: "Outils de laboratoire et appareils", devBoards: "Cartes de développement", interact: "Applications web éducatives", launch: "Lancer", getInTouch: "Contact", info: "Coordonnées", email: "E-mail", loc: "Emplacement", follow: "Suivez-moi", sendMsg: "Envoyer un message", subj: "Sujet", msg: "Message", send: "Envoyer", back: "Retour", backPort: "Retour au portfolio", all: "Tous", noMatch: "Aucun résultat pour", tryAdj: "Essayez d'autres termes"
+    phd: "Mes doctorants", equip: "Équipements", boards: "Cartes embarquées", home: "Accueil", about: "À propos", teaching: "Enseignement", research: "Recherche", publications: "Publications", projects: "Projets", academicProjects: "Projets Dirigés", learningApps: "Apps Éducatives", contact: "Contact", search: "Chercher...", viewResearch: "Voir la recherche", contactMe: "Me contacter", bio: "Biographie", cv: "Télécharger CV", expertise: "Domaines d'expertise", courses: "Cours, laboratoires et ressources", showMoreCourses: "Voir plus de cours", viewMaterials: "Voir les documents", hideMaterials: "Cacher", interests: "Intérêts de recherche", pubs: "Publications", viewPaper: "Voir l'article", showMorePubs: "Voir plus", showcase: "Projets", showMoreProj: "Voir plus", dirProj: "Projets dirigés pour Licence, Master et Ingénieur", sortBy: "Trier par", date: "Date / Année", level: "Niveau", name: "Nom du projet", asc: "Croissant", desc: "Décroissant", showMoreAcad: "Voir plus", docCandidates: "Doctorants sous ma direction", completed: "Terminé", inProgress: "En cours", start: "Début", defense: "Soutenance", tools: "Outils de laboratoire et appareils", devBoards: "Cartes de développement", interact: "Applications web éducatives", launch: "Lancer", getInTouch: "Contact", info: "Coordonnées", email: "E-mail", loc: "Emplacement", follow: "Suivez-moi", sendMsg: "Envoyer un message", subj: "Sujet", msg: "Message", send: "Envoyer", back: "Retour", backPort: "Retour au portfolio", all: "Tous", noMatch: "Aucun résultat pour", tryAdj: "Essayez d'autres termes", authors: "Auteurs", quartile: "Quartile", filter: "Filtrer", allQuartiles: "Tous les Quartiles", allYears: "Toutes les Années", exportCsv: "Exporter CSV", allLevels: "Tous les Niveaux"
   },
   ar: {
-    phd: "الدكتوراه تحت إشرافي", equip: "المعدات العلمية", boards: "اللوحات المدمجة", home: "الرئيسية", about: "حول", teaching: "التدريس", research: "البحث", publications: "المنشورات", projects: "المشاريع", academicProjects: "المشاريع الأكاديمية", learningApps: "تطبيقات تعليمية", contact: "اتصل", search: "بحث...", viewResearch: "عرض الأبحاث", contactMe: "اتصل بي", bio: "السيرة الذاتية", cv: "تحميل السيرة الذاتية", expertise: "مجالات الخبرة", courses: "الدروس والمختبرات والموارد التعليمية", showMoreCourses: "عرض المزيد", viewMaterials: "عرض المواد", hideMaterials: "إخفاء", interests: "اهتمامات البحث", pubs: "منشورات مختارة", viewPaper: "عرض المقال", showMorePubs: "عرض المزيد", showcase: "مشاريع العرض", showMoreProj: "عرض المزيد", dirProj: "المشاريع الموجهة لليسانس والماستر والمهندس", sortBy: "ترتيب حسب", date: "التاريخ / السنة", level: "المستوى", name: "اسم المشروع", asc: "تصاعدي", desc: "تنازلي", showMoreAcad: "عرض المزيد", docCandidates: "مرشحو الدكتوراه تحت إشرافي", completed: "مكتمل", inProgress: "قيد الإنجاز", start: "البداية", defense: "المناقشة", tools: "أدوات المختبر وأجهزة القياس", devBoards: "لوحات التطوير والمتحكمات الدقيقة", interact: "تطبيقات ويب تعليمية تفاعلية", launch: "تشغيل التطبيق", getInTouch: "ابقى على تواصل", info: "معلومات الاتصال", email: "البريد الإلكتروني", loc: "الموقع", follow: "تابعني", sendMsg: "إرسال رسالة", subj: "الموضوع", msg: "الرسالة", send: "إرسال", back: "العودة", backPort: "العودة للمحفظة", all: "الكل", noMatch: "لا توجد نتائج لـ", tryAdj: "حاول تعديل كلمات البحث"
+    phd: "الدكتوراه تحت إشرافي", equip: "المعدات العلمية", boards: "اللوحات المدمجة", home: "الرئيسية", about: "حول", teaching: "التدريس", research: "البحث", publications: "المنشورات", projects: "المشاريع", academicProjects: "المشاريع الأكاديمية", learningApps: "تطبيقات تعليمية", contact: "اتصل", search: "بحث...", viewResearch: "عرض الأبحاث", contactMe: "اتصل بي", bio: "السيرة الذاتية", cv: "تحميل السيرة الذاتية", expertise: "مجالات الخبرة", courses: "الدروس والمختبرات والموارد التعليمية", showMoreCourses: "عرض المزيد", viewMaterials: "عرض المواد", hideMaterials: "إخفاء", interests: "اهتمامات البحث", pubs: "منشورات مختارة", viewPaper: "عرض المقال", showMorePubs: "عرض المزيد", showcase: "مشاريع العرض", showMoreProj: "عرض المزيد", dirProj: "المشاريع الموجهة لليسانس والماستر والمهندس", sortBy: "ترتيب حسب", date: "التاريخ / السنة", level: "المستوى", name: "اسم المشروع", asc: "تصاعدي", desc: "تنازلي", showMoreAcad: "عرض المزيد", docCandidates: "مرشحو الدكتوراه تحت إشرافي", completed: "مكتمل", inProgress: "قيد الإنجاز", start: "البداية", defense: "المناقشة", tools: "أدوات المختبر وأجهزة القياس", devBoards: "لوحات التطوير والمتحكمات الدقيقة", interact: "تطبيقات ويب تعليمية تفاعلية", launch: "تشغيل التطبيق", getInTouch: "ابقى على تواصل", info: "معلومات الاتصال", email: "البريد الإلكتروني", loc: "الموقع", follow: "تابعني", sendMsg: "إرسال رسالة", subj: "الموضوع", msg: "الرسالة", send: "إرسال", back: "العودة", backPort: "العودة للمحفظة", all: "الكل", noMatch: "لا توجد نتائج لـ", tryAdj: "حاول تعديل كلمات البحث", authors: "المؤلفون", quartile: "الربع", filter: "تصفية", allQuartiles: "جميع الأرباع", allYears: "جميع السنوات", exportCsv: "تصدير CSV", allLevels: "جميع المستويات"
   }
 };
 
@@ -366,7 +366,80 @@ const Research = ({ data, socialLinks, t }) => {
 };
 
 const Publications = ({ data, socialLinks, limit, onShowMore, t }) => {
-    const displayData = limit && data.length > limit ? data.slice(0, limit) : data;
+    const [sortBy, setSortBy] = useState('year');
+    const [sortOrder, setSortOrder] = useState('desc');
+    const [filterQuartile, setFilterQuartile] = useState('all');
+    const [filterYear, setFilterYear] = useState('all');
+
+    const quartiles = useMemo(() => {
+        if (!data) return [];
+        const q = new Set(data.map(p => p.quartile).filter(Boolean));
+        return Array.from(q).sort();
+    }, [data]);
+    
+    const years = useMemo(() => {
+        if (!data) return [];
+        const y = new Set(data.map(p => p.year).filter(Boolean));
+        return Array.from(y).sort((a, b) => b - a);
+    }, [data]);
+
+    const displayData = useMemo(() => {
+        if (!data) return [];
+        let result = [...data];
+
+        if (!limit) {
+            if (filterQuartile !== 'all') {
+                result = result.filter(p => p.quartile === filterQuartile);
+            }
+            if (filterYear !== 'all') {
+                result = result.filter(p => p.year?.toString() === filterYear?.toString());
+            }
+
+            result.sort((a, b) => {
+                let valA = a[sortBy] || '';
+                let valB = b[sortBy] || '';
+
+                if (sortBy === 'year') {
+                    valA = parseInt(valA) || 0;
+                    valB = parseInt(valB) || 0;
+                } else {
+                    valA = valA.toString().toLowerCase();
+                    valB = valB.toString().toLowerCase();
+                }
+
+                if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
+                if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+        return limit && result.length > limit ? result.slice(0, limit) : result;
+    }, [data, filterQuartile, filterYear, sortBy, sortOrder, limit]);
+
+    const handleExport = () => {
+        const headers = ['Title', 'Authors', 'Journal', 'Year', 'Quartile', 'Link'];
+        const csvRows = [headers.join(',')];
+        
+        displayData.forEach(pub => {
+            const row = [
+                `"${(pub.title || '').replace(/"/g, '""')}"`,
+                `"${(pub.authors || '').replace(/"/g, '""')}"`,
+                `"${(pub.journal || '').replace(/"/g, '""')}"`,
+                `"${pub.year || ''}"`,
+                `"${pub.quartile || ''}"`,
+                `"${pub.link && pub.link !== '#' ? pub.link : ''}"`
+            ];
+            csvRows.push(row.join(','));
+        });
+        
+        const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(csvRows.join('\n'));
+        const link = document.createElement("a");
+        link.setAttribute("href", csvContent);
+        link.setAttribute("download", "publications_export.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <section id="publications" className="py-5 section-bg-2">
@@ -375,6 +448,42 @@ const Publications = ({ data, socialLinks, limit, onShowMore, t }) => {
                     <div className="text-center mb-5">
                         <h2 className="section-title">{t.pubs}</h2>
                     </div>
+
+                    {!limit && (
+                        <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 bg-light p-3 rounded shadow-sm">
+                            <div className="d-flex flex-wrap gap-3 align-items-center">
+                                <div className="d-flex align-items-center gap-2">
+                                    <span className="fw-medium text-muted">{t.sortBy}:</span>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                                        <option value="year">{t.date}</option>
+                                        <option value="title">{t.name}</option>
+                                        <option value="authors">{t.authors}</option>
+                                        <option value="quartile">{t.quartile}</option>
+                                    </select>
+                                    <button className="btn btn-sm btn-outline-secondary bg-white border-0 shadow-sm" onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}>
+                                        <i className={`bi bi-sort-${sortOrder === 'asc' ? 'down' : 'up'}`}></i>
+                                    </button>
+                                </div>
+                                
+                                <div className="d-flex align-items-center gap-2">
+                                    <span className="fw-medium text-muted">{t.filter}:</span>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={filterQuartile} onChange={(e) => setFilterQuartile(e.target.value)}>
+                                        <option value="all">{t.allQuartiles}</option>
+                                        {quartiles.map(q => <option key={q} value={q}>{q}</option>)}
+                                    </select>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={filterYear} onChange={(e) => setFilterYear(e.target.value)}>
+                                        <option value="all">{t.allYears}</option>
+                                        {years.map(y => <option key={y} value={y}>{y}</option>)}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button className="btn btn-sm btn-success shadow-sm" onClick={handleExport}>
+                                <i className="bi bi-download me-1"></i> {t.exportCsv}
+                            </button>
+                        </div>
+                    )}
+
                     <div className="card p-0 overflow-hidden shadow-sm border-0">
                         <div className="list-group list-group-flush">
                             {displayData.map((pub, index) => (
@@ -395,6 +504,11 @@ const Publications = ({ data, socialLinks, limit, onShowMore, t }) => {
                                     )}
                                 </div>
                             ))}
+                            {displayData.length === 0 && !limit && (
+                                <div className="p-4 text-center text-muted">
+                                    No publications match the selected filters.
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="text-center mt-4 d-flex justify-content-center gap-3">
@@ -453,33 +567,80 @@ const Projects = ({ data, limit, onShowMore, t }) => {
 const AcademicProjects = ({ data, limit, onShowMore, t }) => {
     const [sortBy, setSortBy] = useState('year');
     const [sortOrder, setSortOrder] = useState('desc');
+    const [filterLevel, setFilterLevel] = useState('all');
+    const [filterYear, setFilterYear] = useState('all');
 
-    const sortedData = useMemo(() => {
+    const levels = useMemo(() => {
         if (!data) return [];
-        const sorted = [...data].sort((a, b) => {
-            let valA = a[sortBy] || '';
-            let valB = b[sortBy] || '';
+        const l = new Set(data.map(p => p.level).filter(Boolean));
+        return Array.from(l).sort();
+    }, [data]);
 
-            if (sortBy === 'year') {
-                valA = new Date(valA).getTime() || 0;
-                valB = new Date(valB).getTime() || 0;
-            } else {
-                valA = valA.toString().toLowerCase();
-                valB = valB.toString().toLowerCase();
+    const years = useMemo(() => {
+        if (!data) return [];
+        const y = new Set(data.map(p => {
+            if (!p.year) return '';
+            return p.year.toString().split('-')[0];
+        }).filter(Boolean));
+        return Array.from(y).sort((a, b) => b - a);
+    }, [data]);
+
+    const displayData = useMemo(() => {
+        if (!data) return [];
+        let result = [...data];
+
+        if (!limit) {
+            if (filterLevel !== 'all') {
+                result = result.filter(p => p.level === filterLevel);
+            }
+            if (filterYear !== 'all') {
+                result = result.filter(p => p.year?.toString().split('-')[0] === filterYear);
             }
 
-            if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
-            if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
-            return 0;
-        });
-        
-        return limit && sorted.length > limit ? sorted.slice(0, limit) : sorted;
-    }, [data, sortBy, sortOrder, limit]);
+            result.sort((a, b) => {
+                let valA = a[sortBy] || '';
+                let valB = b[sortBy] || '';
+
+                if (sortBy === 'year') {
+                    valA = new Date(valA).getTime() || 0;
+                    valB = new Date(valB).getTime() || 0;
+                } else {
+                    valA = valA.toString().toLowerCase();
+                    valB = valB.toString().toLowerCase();
+                }
+
+                if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
+                if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+        return limit && result.length > limit ? result.slice(0, limit) : result;
+    }, [data, filterLevel, filterYear, sortBy, sortOrder, limit]);
 
     if (!data || data.length === 0) return null;
 
-    const toggleSortOrder = () => {
-        setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+    const handleExport = () => {
+        const headers = ['Project Name', 'Level', 'Date/Year', 'Description'];
+        const csvRows = [headers.join(',')];
+        
+        displayData.forEach(proj => {
+            const row = [
+                `"${(proj.title || '').replace(/"/g, '""')}"`,
+                `"${(proj.level || '').replace(/"/g, '""')}"`,
+                `"${(proj.year || '').replace(/"/g, '""')}"`,
+                `"${(proj.desc || '').replace(/"/g, '""')}"`
+            ];
+            csvRows.push(row.join(','));
+        });
+        
+        const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(csvRows.join('\n'));
+        const link = document.createElement("a");
+        link.setAttribute("href", csvContent);
+        link.setAttribute("download", "academic_projects_export.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -491,20 +652,42 @@ const AcademicProjects = ({ data, limit, onShowMore, t }) => {
                         <p className="text-muted">{t.dirProj}</p>
                     </div>
 
-                    <div className="d-flex justify-content-end align-items-center mb-4 gap-3 bg-light p-3 rounded shadow-sm">
-                        <span className="fw-medium text-muted">{t.sortBy}:</span>
-                        <select className="form-select w-auto border-0 shadow-sm" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                            <option value="year">{t.date}</option>
-                            <option value="level">{t.level}</option>
-                            <option value="title">{t.name}</option>
-                        </select>
-                        <button className="btn btn-outline-secondary bg-white border-0 shadow-sm" onClick={toggleSortOrder}>
-                            <i className={`bi bi-sort-${sortOrder === 'asc' ? 'down' : 'up'}`}></i> {sortOrder === 'asc' ? t.asc : t.desc}
-                        </button>
-                    </div>
+                    {!limit && (
+                        <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 bg-light p-3 rounded shadow-sm">
+                            <div className="d-flex flex-wrap gap-3 align-items-center">
+                                <div className="d-flex align-items-center gap-2">
+                                    <span className="fw-medium text-muted">{t.sortBy}:</span>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                                        <option value="year">{t.date}</option>
+                                        <option value="level">{t.level}</option>
+                                        <option value="title">{t.name}</option>
+                                    </select>
+                                    <button className="btn btn-sm btn-outline-secondary bg-white border-0 shadow-sm" onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}>
+                                        <i className={`bi bi-sort-${sortOrder === 'asc' ? 'down' : 'up'}`}></i>
+                                    </button>
+                                </div>
+                                
+                                <div className="d-flex align-items-center gap-2">
+                                    <span className="fw-medium text-muted">{t.filter}:</span>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={filterLevel} onChange={(e) => setFilterLevel(e.target.value)}>
+                                        <option value="all">{t.allLevels || 'All Levels'}</option>
+                                        {levels.map(l => <option key={l} value={l}>{l}</option>)}
+                                    </select>
+                                    <select className="form-select form-select-sm w-auto border-0 shadow-sm" value={filterYear} onChange={(e) => setFilterYear(e.target.value)}>
+                                        <option value="all">{t.allYears || 'All Years'}</option>
+                                        {years.map(y => <option key={y} value={y}>{y}</option>)}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button className="btn btn-sm btn-success shadow-sm" onClick={handleExport}>
+                                <i className="bi bi-download me-1"></i> {t.exportCsv || 'Export CSV'}
+                            </button>
+                        </div>
+                    )}
 
                     <div className="row g-4">
-                        {sortedData.map((proj, idx) => (
+                        {displayData.map((proj, idx) => (
                             <div className="col-md-6" key={idx}>
                                 <div className="card h-100 border-primary border-opacity-25 shadow-sm">
                                     <div className="card-body">
@@ -521,6 +704,11 @@ const AcademicProjects = ({ data, limit, onShowMore, t }) => {
                                 </div>
                             </div>
                         ))}
+                        {displayData.length === 0 && !limit && (
+                            <div className="col-12 text-center text-muted p-4">
+                                No academic projects match the selected filters.
+                            </div>
+                        )}
                     </div>
                     {limit && data.length > limit && (
                         <div className="text-center mt-5">

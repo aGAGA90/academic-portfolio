@@ -10,11 +10,11 @@
     "cvUrl": "uploads/1778419382321-CV- GAGA-AHMED_francais_PH 2024.pdf",
     "skills": [
       {
-        "name": "Embedded Systems (FPGA/MCU)",
+        "name": "Embedded Systems (MCU/FPGA)",
         "level": 95
       },
       {
-        "name": "Digital Electronics",
+        "name": "Digital & Analog Electronics",
         "level": 90
       },
       {
@@ -22,11 +22,15 @@
         "level": 85
       },
       {
-        "name": "stagahamose",
-        "level": 50
+        "name": "PCB Design",
+        "level": 80
       },
       {
-        "name": "sanae hopi",
+        "name": "DAQ Systems Design",
+        "level": 75
+      },
+      {
+        "name": "Hardwar/Software Developpement",
         "level": 50
       }
     ]
@@ -46,7 +50,7 @@
           "url": "uploads/1778422215157-TD electronique numerique_Final_ISE 2025_2026.pdf"
         },
         {
-          "name": "Travaux Pratique",
+          "name": "Travaux Pratiques",
           "url": "uploads/1778422220809-TP electronique numerique_Ver4_ahmed SMP_ISE 2025_2026.pdf"
         }
       ]
@@ -66,13 +70,13 @@
   "research": {
     "interests": [
       "Hardware acceleration for machine learning algorithms",
-      "Advanced PID and robust control systems on FPGAs",
-      "Real-time signal processing in embedded environments",
-      "Educational simulators and e-learning platforms for engineering"
+      "Advanced PID and robust control systems",
+      "Real-time signal processing in embedded Systems",
+      "Advanced Power Electronics Systems"
     ],
-    "hIndex": "32",
+    "hIndex": "14",
     "publicationsCount": "54",
-    "totalCitations": "520+"
+    "totalCitations": "570+"
   },
   "publications": [
     {
@@ -98,6 +102,30 @@
       "year": "2023",
       "link": "#",
       "quartile": "Q2"
+    },
+    {
+      "title": "fffff",
+      "authors": "dfgdfg",
+      "journal": "gdtgtg",
+      "year": "2343",
+      "link": "345435435435",
+      "quartile": "q2"
+    },
+    {
+      "title": "lsruhtngjrsrtg",
+      "authors": "ergrtgstrg",
+      "journal": "sjfgnrsthgnjkr",
+      "year": "rejgfrsjgvbtrhg",
+      "link": "fgkbmb",
+      "quartile": "q3"
+    },
+    {
+      "title": "fhvlirhgnjsn",
+      "authors": "rkgtrgnbd",
+      "journal": "gtrngbtr",
+      "year": "aerkgnekjr",
+      "link": "b rtbsrtjgn",
+      "quartile": "trgnrjth"
     }
   ],
   "projects": [
