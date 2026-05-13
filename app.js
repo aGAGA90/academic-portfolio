@@ -2,13 +2,13 @@ const { useState, useEffect, useRef, useMemo } = React;
 
 const translations = {
   en: {
-    phd: "My supervised Phd", equip: "Scientific Equipements", boards: "Embedded Boards", home: "Home", about: "About", teaching: "Teaching", research: "Research", publications: "Publications", projects: "Projects", academicProjects: "Academic Projects", learningApps: "Learning Apps", contact: "Contact", search: "Search...", viewResearch: "View Research", contactMe: "Contact Me", bio: "Biography", cv: "Download CV", expertise: "Areas of Expertise", courses: "Courses, laboratories, and educational resources", showMoreCourses: "Show More Courses", viewMaterials: "View Materials", hideMaterials: "Hide Materials", interests: "Research Interests", pubs: "Selected Publications", viewPaper: "View Paper", showMorePubs: "Show More Publications", showcase: "Showcase Projects", showMoreProj: "Show More Projects", dirProj: "Directed projects for Licence, Master, and Engineering", sortBy: "Sort By", date: "Date / Year", level: "Level", name: "Project Name", asc: "Ascending", desc: "Descending", showMoreAcad: "Show More Academic Projects", docCandidates: "Doctoral candidates under my supervision", completed: "Completed", inProgress: "In Progress", start: "Start", defense: "Defense", tools: "Laboratory tools and measurement devices", devBoards: "Development boards and microcontrollers", interact: "Interactive educational web applications", launch: "Launch App", getInTouch: "Get In Touch", info: "Contact Information", email: "Email", loc: "Location", follow: "Follow Me", sendMsg: "Send a Message", subj: "Subject", msg: "Message", send: "Send Message", back: "Back to Home", backPort: "Back to Portfolio", all: "All", noMatch: "No matches found for", tryAdj: "Try adjusting your search terms", authors: "Authors", quartile: "Quartile", filter: "Filter", allQuartiles: "All Quartiles", allYears: "All Years", exportCsv: "Export CSV", allLevels: "All Levels"
+    phd: "My supervised Phd", equip: "Scientific Equipements", boards: "Embedded Boards", home: "Home", about: "About", teaching: "Teaching", research: "Research", publications: "Publications", projects: "Projects", academicProjects: "Academic Projects", learningApps: "Learning Apps", contact: "Contact", search: "Search...", viewResearch: "View Research", contactMe: "Contact Me", bio: "Biography", cv: "Download CV", expertise: "Areas of Expertise", courses: "Courses, laboratories, and educational resources", showMoreCourses: "Show More Courses", viewMaterials: "View Materials", hideMaterials: "Hide Materials", interests: "Research Interests", pubs: "Selected Publications", viewPaper: "View Paper", showMorePubs: "Show More Publications", showcase: "Showcase Projects", showMoreProj: "Show More Projects", dirProj: "Directed projects for Licence, Master, and Engineering", sortBy: "Sort By", date: "Date / Year", level: "Level", name: "Project Name", asc: "Ascending", desc: "Descending", showMoreAcad: "Show More Academic Projects", docCandidates: "Doctoral candidates under my supervision", completed: "Completed", inProgress: "In Progress", start: "Start", defense: "Defense", tools: "Laboratory tools and measurement devices", devBoards: "Development boards and microcontrollers", interact: "Interactive educational web applications", launch: "Launch App", getInTouch: "Get In Touch", info: "Contact Information", email: "Email", loc: "Location", follow: "Follow Me", sendMsg: "Send a Message", subj: "Subject", msg: "Message", send: "Send Message", back: "Back to Home", backPort: "Back to Portfolio", all: "All", noMatch: "No matches found for", tryAdj: "Try adjusting your search terms", authors: "Authors", quartile: "Quartile", filter: "Filter", allQuartiles: "All Quartiles", allYears: "All Years", exportCsv: "Export CSV", allLevels: "All Levels", statPhd: "Supervised Thesis", statPapers: "Research Papers", statHIndex: "H-Index", statProjects: "Academic Projects", statPatents: "Patents", statCitations: "Total Citations", gallery: "Project Gallery"
   },
   fr: {
-    phd: "Mes doctorants", equip: "Équipements", boards: "Cartes embarquées", home: "Accueil", about: "À propos", teaching: "Enseignement", research: "Recherche", publications: "Publications", projects: "Projets", academicProjects: "Projets Dirigés", learningApps: "Apps Éducatives", contact: "Contact", search: "Chercher...", viewResearch: "Voir la recherche", contactMe: "Me contacter", bio: "Biographie", cv: "Télécharger CV", expertise: "Domaines d'expertise", courses: "Cours, laboratoires et ressources", showMoreCourses: "Voir plus de cours", viewMaterials: "Voir les documents", hideMaterials: "Cacher", interests: "Intérêts de recherche", pubs: "Publications", viewPaper: "Voir l'article", showMorePubs: "Voir plus", showcase: "Projets", showMoreProj: "Voir plus", dirProj: "Projets dirigés pour Licence, Master et Ingénieur", sortBy: "Trier par", date: "Date / Année", level: "Niveau", name: "Nom du projet", asc: "Croissant", desc: "Décroissant", showMoreAcad: "Voir plus", docCandidates: "Doctorants sous ma direction", completed: "Terminé", inProgress: "En cours", start: "Début", defense: "Soutenance", tools: "Outils de laboratoire et appareils", devBoards: "Cartes de développement", interact: "Applications web éducatives", launch: "Lancer", getInTouch: "Contact", info: "Coordonnées", email: "E-mail", loc: "Emplacement", follow: "Suivez-moi", sendMsg: "Envoyer un message", subj: "Sujet", msg: "Message", send: "Envoyer", back: "Retour", backPort: "Retour au portfolio", all: "Tous", noMatch: "Aucun résultat pour", tryAdj: "Essayez d'autres termes", authors: "Auteurs", quartile: "Quartile", filter: "Filtrer", allQuartiles: "Tous les Quartiles", allYears: "Toutes les Années", exportCsv: "Exporter CSV", allLevels: "Tous les Niveaux"
+    phd: "Mes doctorants", equip: "Équipements", boards: "Cartes embarquées", home: "Accueil", about: "À propos", teaching: "Enseignement", research: "Recherche", publications: "Publications", projects: "Projets", academicProjects: "Projets Dirigés", learningApps: "Apps Éducatives", contact: "Contact", search: "Chercher...", viewResearch: "Voir la recherche", contactMe: "Me contacter", bio: "Biographie", cv: "Télécharger CV", expertise: "Domaines d'expertise", courses: "Cours, laboratoires et ressources", showMoreCourses: "Voir plus de cours", viewMaterials: "Voir les documents", hideMaterials: "Cacher", interests: "Intérêts de recherche", pubs: "Publications", viewPaper: "Voir l'article", showMorePubs: "Voir plus", showcase: "Projets", showMoreProj: "Voir plus", dirProj: "Projets dirigés pour Licence, Master et Ingénieur", sortBy: "Trier par", date: "Date / Année", level: "Niveau", name: "Nom du projet", asc: "Croissant", desc: "Décroissant", showMoreAcad: "Voir plus", docCandidates: "Doctorants sous ma direction", completed: "Terminé", inProgress: "En cours", start: "Début", defense: "Soutenance", tools: "Outils de laboratoire et appareils", devBoards: "Cartes de développement", interact: "Applications web éducatives", launch: "Lancer", getInTouch: "Contact", info: "Coordonnées", email: "E-mail", loc: "Emplacement", follow: "Suivez-moi", sendMsg: "Envoyer un message", subj: "Sujet", msg: "Message", send: "Envoyer", back: "Retour", backPort: "Retour au portfolio", all: "Tous", noMatch: "Aucun résultat pour", tryAdj: "Essayez d'autres termes", authors: "Auteurs", quartile: "Quartile", filter: "Filtrer", allQuartiles: "Tous les Quartiles", allYears: "Toutes les Années", exportCsv: "Exporter CSV", allLevels: "Tous les Niveaux", statPhd: "Thèses Encadrées", statPapers: "Articles de Recherche", statHIndex: "Indice h", statProjects: "Projets Dirigés", statPatents: "Brevets", statCitations: "Citations Totales", gallery: "Galerie de Projets"
   },
   ar: {
-    phd: "الدكتوراه تحت إشرافي", equip: "المعدات العلمية", boards: "اللوحات المدمجة", home: "الرئيسية", about: "حول", teaching: "التدريس", research: "البحث", publications: "المنشورات", projects: "المشاريع", academicProjects: "المشاريع الأكاديمية", learningApps: "تطبيقات تعليمية", contact: "اتصل", search: "بحث...", viewResearch: "عرض الأبحاث", contactMe: "اتصل بي", bio: "السيرة الذاتية", cv: "تحميل السيرة الذاتية", expertise: "مجالات الخبرة", courses: "الدروس والمختبرات والموارد التعليمية", showMoreCourses: "عرض المزيد", viewMaterials: "عرض المواد", hideMaterials: "إخفاء", interests: "اهتمامات البحث", pubs: "منشورات مختارة", viewPaper: "عرض المقال", showMorePubs: "عرض المزيد", showcase: "مشاريع العرض", showMoreProj: "عرض المزيد", dirProj: "المشاريع الموجهة لليسانس والماستر والمهندس", sortBy: "ترتيب حسب", date: "التاريخ / السنة", level: "المستوى", name: "اسم المشروع", asc: "تصاعدي", desc: "تنازلي", showMoreAcad: "عرض المزيد", docCandidates: "مرشحو الدكتوراه تحت إشرافي", completed: "مكتمل", inProgress: "قيد الإنجاز", start: "البداية", defense: "المناقشة", tools: "أدوات المختبر وأجهزة القياس", devBoards: "لوحات التطوير والمتحكمات الدقيقة", interact: "تطبيقات ويب تعليمية تفاعلية", launch: "تشغيل التطبيق", getInTouch: "ابقى على تواصل", info: "معلومات الاتصال", email: "البريد الإلكتروني", loc: "الموقع", follow: "تابعني", sendMsg: "إرسال رسالة", subj: "الموضوع", msg: "الرسالة", send: "إرسال", back: "العودة", backPort: "العودة للمحفظة", all: "الكل", noMatch: "لا توجد نتائج لـ", tryAdj: "حاول تعديل كلمات البحث", authors: "المؤلفون", quartile: "الربع", filter: "تصفية", allQuartiles: "جميع الأرباع", allYears: "جميع السنوات", exportCsv: "تصدير CSV", allLevels: "جميع المستويات"
+    phd: "الدكتوراه تحت إشرافي", equip: "المعدات العلمية", boards: "اللوحات المدمجة", home: "الرئيسية", about: "حول", teaching: "التدريس", research: "البحث", publications: "المنشورات", projects: "المشاريع", academicProjects: "المشاريع الأكاديمية", learningApps: "تطبيقات تعليمية", contact: "اتصل", search: "بحث...", viewResearch: "عرض الأبحاث", contactMe: "اتصل بي", bio: "السيرة الذاتية", cv: "تحميل السيرة الذاتية", expertise: "مجالات الخبرة", courses: "الدروس والمختبرات والموارد التعليمية", showMoreCourses: "عرض المزيد", viewMaterials: "عرض المواد", hideMaterials: "إخفاء", interests: "اهتمامات البحث", pubs: "منشورات مختارة", viewPaper: "عرض المقال", showMorePubs: "عرض المزيد", showcase: "مشاريع العرض", showMoreProj: "عرض المزيد", dirProj: "المشاريع الموجهة لليسانس والماستر والمهندس", sortBy: "ترتيب حسب", date: "التاريخ / السنة", level: "المستوى", name: "اسم المشروع", asc: "تصاعدي", desc: "تنازلي", showMoreAcad: "عرض المزيد", docCandidates: "مرشحو الدكتوراه تحت إشرافي", completed: "مكتمل", inProgress: "قيد الإنجاز", start: "البداية", defense: "المناقشة", tools: "أدوات المختبر وأجهزة القياس", devBoards: "لوحات التطوير والمتحكمات الدقيقة", interact: "تطبيقات ويب تعليمية تفاعلية", launch: "تشغيل التطبيق", getInTouch: "ابقى على تواصل", info: "معلومات الاتصال", email: "البريد الإلكتروني", loc: "الموقع", follow: "تابعني", sendMsg: "إرسال رسالة", subj: "الموضوع", msg: "الرسالة", send: "إرسال", back: "العودة", backPort: "العودة للمحفظة", all: "الكل", noMatch: "لا توجد نتائج لـ", tryAdj: "حاول تعديل كلمات البحث", authors: "المؤلفون", quartile: "الربع", filter: "تصفية", allQuartiles: "جميع الأرباع", allYears: "جميع السنوات", exportCsv: "تصدير CSV", allLevels: "جميع المستويات", statPhd: "أطروحات تحت الإشراف", statPapers: "أوراق بحثية", statHIndex: "مؤشر إتش", statProjects: "المشاريع الأكاديمية", statPatents: "براءات الاختراع", statCitations: "إجمالي الاستشهادات", gallery: "معرض المشاريع"
   }
 };
 
@@ -53,17 +53,17 @@ const TopBar = ({ darkMode, setDarkMode, searchQuery, setSearchQuery, performSea
             <ul className="nav mb-2 mb-md-0 d-flex flex-nowrap overflow-auto" style={{ whiteSpace: 'nowrap' }}>
                 <li className="nav-item">
                     <a className={`nav-link fw-bold px-2 ${darkMode ? 'text-light' : 'text-primary'}`} style={{ fontSize: '0.9rem' }} href="#supervised-phd" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>
-                        {t.phd}
+                        <i className="bi bi-person-badge me-1"></i> {t.phd}
                     </a>
                 </li>
                 <li className="nav-item">
                     <a className={`nav-link fw-bold px-2 ${darkMode ? 'text-light' : 'text-primary'}`} style={{ fontSize: '0.9rem' }} href="#scientific-equipments" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>
-                        {t.equip}
+                        <i className="bi bi-tools me-1"></i> {t.equip}
                     </a>
                 </li>
                 <li className="nav-item">
                     <a className={`nav-link fw-bold px-2 ${darkMode ? 'text-light' : 'text-primary'}`} style={{ fontSize: '0.9rem' }} href="#embedded-boards" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>
-                        {t.boards}
+                        <i className="bi bi-motherboard me-1"></i> {t.boards}
                     </a>
                 </li>
             </ul>
@@ -143,15 +143,15 @@ const Navbar = ({ darkMode, setDarkMode, title, setCurrentApp, setViewingSection
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto mb-2 mb-xl-0 align-items-xl-center">
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#home" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.home}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#about" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.about}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#teaching" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.teaching}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#research" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.research}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#publications" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.publications}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#projects" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.projects}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#academic-projects" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.academicProjects}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#learning-apps" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.learningApps}</a></li>
-                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#contact" onClick={() => { setCurrentApp(null); setViewingSection(null); }}>{t.contact}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#home" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-house me-1"></i> {t.home}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#about" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-person me-1"></i> {t.about}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#teaching" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-book me-1"></i> {t.teaching}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#research" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-graph-up me-1"></i> {t.research}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#publications" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-journal me-1"></i> {t.publications}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#projects" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-briefcase me-1"></i> {t.projects}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#academic-projects" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-mortarboard me-1"></i> {t.academicProjects}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#learning-apps" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-laptop me-1"></i> {t.learningApps}</a></li>
+                            <li className="nav-item"><a className="nav-link text-white px-1 px-xl-2" style={{ whiteSpace: 'nowrap', fontSize: '0.85rem' }} href="#contact" onClick={() => { setCurrentApp(null); setViewingSection(null); }}><i className="bi bi-envelope me-1"></i> {t.contact}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -161,19 +161,45 @@ const Navbar = ({ darkMode, setDarkMode, title, setCurrentApp, setViewingSection
 };
 
 const Hero = ({ data, t }) => {
+    const heroData = data.hero;
+    
+    const stats = [
+        { label: t.statPhd || 'Supervised Thesis', value: data.supervisedPhd ? data.supervisedPhd.length : 0, icon: 'bi-person-badge' },
+        { label: t.statPapers || 'Research Papers', value: data.research?.publicationsCount || (data.publications ? data.publications.length : 0), icon: 'bi-journal-text' },
+        { label: t.statHIndex || 'H-Index', value: data.research?.hIndex || 0, icon: 'bi-graph-up' },
+        { label: t.statProjects || 'Academic Projects', value: data.academicProjects ? data.academicProjects.length : 0, icon: 'bi-mortarboard' },
+        { label: t.statPatents || 'Patents', value: data.research?.patents || 0, icon: 'bi-lightbulb' },
+        { label: t.statCitations || 'Total Citations', value: data.research?.totalCitations || 0, icon: 'bi-quote' }
+    ];
+
+    // Double the stats for a smooth, continuous marquee loop
+    const marqueeStats = [...stats, ...stats];
+
     return (
-        <section id="home" className="hero-section section-bg-1">
-            <div className="container">
-                <div className="row align-items-center flex-column-reverse flex-md-row">
+        <section id="home" className="hero-section section-bg-1 flex-column align-items-stretch" style={{ paddingBottom: '0' }}>
+            <div className="stats-marquee-container shadow-sm border-bottom border-primary border-opacity-10 py-2">
+                <div className="stats-marquee">
+                    {marqueeStats.map((stat, idx) => (
+                        <div className="stat-item" key={idx}>
+                            <i className={`bi ${stat.icon} fs-5 text-primary`}></i>
+                            <span className="stat-value text-dark fw-bold fs-5">{stat.value}</span>
+                            <span className="stat-label text-muted small fw-medium">{stat.label}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="container flex-grow-1 d-flex align-items-center py-5">
+                <div className="row w-100 align-items-center flex-column-reverse flex-md-row m-0">
                     <div className="col-md-7 text-center text-md-start mt-5 mt-md-0">
                         <h1 className="display-4 fw-bold mb-3">
-                            Hello, I'm <span className="text-primary">{data.title}</span>
+                            Hello, I'm <span className="text-primary">{heroData.title}</span>
                         </h1>
                         <h2 className="h4 text-muted mb-4 fw-normal">
-                            {data.subtitle}
+                            {heroData.subtitle}
                         </h2>
                         <p className="lead mb-5">
-                            {data.description}
+                            {heroData.description}
                         </p>
                         <div className="d-flex gap-3 justify-content-center justify-content-md-start">
                             <a href="#research" className="btn btn-primary btn-lg">{t.viewResearch}</a>
@@ -184,8 +210,8 @@ const Hero = ({ data, t }) => {
                         <div className="hero-img-container">
                             <div className="hero-shape"></div>
                             <img
-                                src={data.imgUrl || "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
-                                alt={data.title}
+                                src={heroData.imgUrl || "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
+                                alt={heroData.title}
                                 className="hero-img"
                             />
                         </div>
@@ -202,7 +228,7 @@ const About = ({ data, t }) => {
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.about}</h2>
+                        <h2 className="section-title"><i className="bi bi-person me-2 text-primary"></i> {t.about}</h2>
                     </div>
                     <div className="row">
                         <div className="col-lg-6 mb-4 mb-lg-0">
@@ -244,10 +270,9 @@ const About = ({ data, t }) => {
     );
 };
 
-const CourseCard = ({ course, t }) => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+const CourseCard = ({ course, onSelectCourse, t }) => {
     return (
-        <div className="card text-center p-4 h-100 d-flex flex-column shadow-sm border-0">
+        <div className="card text-center p-4 h-100 d-flex flex-column shadow-sm border-0" style={{cursor: 'pointer', transition: 'transform 0.2s'}} onClick={() => onSelectCourse && onSelectCourse(course)} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
             <div className="mb-3">
                 <i className={`bi ${course.icon} display-4 text-primary`}></i>
             </div>
@@ -256,19 +281,7 @@ const CourseCard = ({ course, t }) => {
             <div className="mt-auto position-relative">
                 {course.materials && course.materials.length > 0 ? (
                     <div className="w-100">
-                        <button className="btn btn-sm btn-outline-primary w-100" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                            <i className="bi bi-folder2-open me-1"></i> {dropdownOpen ? t.hideMaterials : t.viewMaterials}
-                        </button>
-                        {dropdownOpen && (
-                            <ul className="list-group mt-2 text-start position-absolute w-100 shadow" style={{ zIndex: 1000 }}>
-                                {course.materials.map((mat, idx) => (
-                                    <a key={idx} href={mat.url} target="_blank" className="list-group-item list-group-item-action d-flex align-items-center text-truncate py-2">
-                                        <i className="bi bi-file-earmark-text me-2 text-primary"></i> 
-                                        <span style={{ fontSize: '0.85rem' }}>{mat.name}</span>
-                                    </a>
-                                ))}
-                            </ul>
-                        )}
+                        <span className="text-primary small fw-bold">{t.viewMaterials} ({course.materials.length}) <i className="bi bi-arrow-right ms-1"></i></span>
                     </div>
                 ) : (
                     <span className="text-muted small border rounded p-2 d-block bg-light">No materials available</span>
@@ -278,7 +291,7 @@ const CourseCard = ({ course, t }) => {
     );
 };
 
-const Teaching = ({ data, limit, onShowMore, t }) => {
+const Teaching = ({ data, limit, onShowMore, onSelectCourse, t }) => {
     const displayData = limit && data.length > limit ? data.slice(0, limit) : data;
 
     return (
@@ -286,13 +299,13 @@ const Teaching = ({ data, limit, onShowMore, t }) => {
             <FadeInSection>
                 <div className="container py-4">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.teaching}</h2>
+                        <h2 className="section-title"><i className="bi bi-book me-2 text-primary"></i> {t.teaching}</h2>
                         <p className="text-muted">{t.courses}</p>
                     </div>
                     <div className="row g-4">
                         {displayData.map((course, index) => (
                             <div className="col-md-6 col-lg-3" key={index}>
-                                <CourseCard course={course} t={t} />
+                                <CourseCard course={course} onSelectCourse={onSelectCourse} t={t} />
                             </div>
                         ))}
                     </div>
@@ -307,13 +320,62 @@ const Teaching = ({ data, limit, onShowMore, t }) => {
     );
 };
 
+const CourseMaterialsView = ({ course, onBack, t }) => {
+    const [activeMaterial, setActiveMaterial] = useState(null);
+
+    if (!course) return null;
+
+    return (
+        <div className="container py-5 mt-5">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h2><i className={`bi ${course.icon} me-2 text-primary`}></i> {course.title}</h2>
+                <button className="btn btn-outline-primary" onClick={() => activeMaterial ? setActiveMaterial(null) : onBack()}>
+                    <i className="bi bi-arrow-left me-2"></i> {activeMaterial ? "Back to Materials" : t.back}
+                </button>
+            </div>
+            
+            {activeMaterial ? (
+                <div className="card shadow-sm border-0 overflow-hidden">
+                    <div className="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+                        <h5 className="mb-0 text-primary"><i className="bi bi-file-earmark-pdf me-2"></i> {activeMaterial.name}</h5>
+                        <a href={activeMaterial.url} target="_blank" rel="noreferrer" className="btn btn-sm btn-primary"><i className="bi bi-box-arrow-up-right me-1"></i> Open Externally</a>
+                    </div>
+                    <div className="card-body p-0" style={{ height: '75vh' }}>
+                        <iframe src={activeMaterial.url} width="100%" height="100%" style={{ border: 'none' }} title={activeMaterial.name}></iframe>
+                    </div>
+                </div>
+            ) : (
+                <div className="row g-4">
+                    <div className="col-12 mb-2">
+                        <p className="text-muted">{course.desc}</p>
+                    </div>
+                    {course.materials && course.materials.length > 0 ? course.materials.map((mat, mIdx) => (
+                        <div className="col-md-3" key={mIdx}>
+                            <div className="card h-100 shadow-sm border-0" style={{cursor: 'pointer', transition: 'all 0.2s'}} onClick={() => setActiveMaterial(mat)} onMouseOver={(e) => e.currentTarget.classList.add('bg-light')} onMouseOut={(e) => e.currentTarget.classList.remove('bg-light')}>
+                                <div className="card-body text-center p-4">
+                                    <i className="bi bi-file-earmark-pdf display-4 text-danger mb-3"></i>
+                                    <h5 className="card-title text-primary h6">{mat.name}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    )) : (
+                        <div className="col-12 text-center py-5">
+                            <p className="text-muted">No materials available for this course yet.</p>
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+};
+
 const Research = ({ data, socialLinks, t }) => {
     return (
         <section id="research" className="py-5 section-bg-1">
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.research}</h2>
+                        <h2 className="section-title"><i className="bi bi-graph-up me-2 text-primary"></i> {t.research}</h2>
                     </div>
                     <div className="row align-items-center">
                         <div className="col-lg-6 mb-4 mb-lg-0">
@@ -446,7 +508,7 @@ const Publications = ({ data, socialLinks, limit, onShowMore, t }) => {
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.pubs}</h2>
+                        <h2 className="section-title"><i className="bi bi-journal me-2 text-primary"></i> {t.pubs}</h2>
                     </div>
 
                     {!limit && (
@@ -525,37 +587,131 @@ const Publications = ({ data, socialLinks, limit, onShowMore, t }) => {
     );
 };
 
+const ProjectGalleryItem = ({ item }) => {
+    const [likes, setLikes] = useState(0);
+    const [dislikes, setDislikes] = useState(0);
+    const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
+
+    const handleLike = () => {
+        if (!liked) {
+            setLikes(l => l + 1);
+            setLiked(true);
+            if (disliked) {
+                setDislikes(d => d - 1);
+                setDisliked(false);
+            }
+        } else {
+            setLikes(l => l - 1);
+            setLiked(false);
+        }
+    };
+
+    const handleDislike = () => {
+        if (!disliked) {
+            setDislikes(d => d + 1);
+            setDisliked(true);
+            if (liked) {
+                setLikes(l => l - 1);
+                setLiked(false);
+            }
+        } else {
+            setDislikes(d => d - 1);
+            setDisliked(false);
+        }
+    };
+
+    const handleShare = async () => {
+        const url = (item.url || item.img);
+        const fullUrl = url.startsWith('http') ? url : window.location.origin + '/' + url.replace(/^\//, '');
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: item.title || 'Project Image',
+                    url: fullUrl
+                });
+            } catch (err) {
+                console.log('Error sharing', err);
+            }
+        } else {
+            navigator.clipboard.writeText(fullUrl);
+            alert('Image URL copied to clipboard!');
+        }
+    };
+
+    return (
+        <div className="card h-100 shadow-sm border-0 overflow-hidden">
+            <img src={item.url || item.img} className="card-img-top" alt="Gallery" style={{ height: '250px', objectFit: 'cover' }} />
+            <div className="card-body p-3 d-flex flex-column justify-content-between">
+                {item.title && <h6 className="card-title text-center mb-3 text-primary">{item.title}</h6>}
+                <div className={`d-flex justify-content-center align-items-center gap-3 mt-auto ${item.title ? 'pt-2 border-top' : 'pt-2'}`}>
+                    <button className={`btn btn-sm ${liked ? 'text-primary' : 'text-muted'} border-0 p-1`} onClick={handleLike} style={{transition: 'all 0.2s'}}>
+                        <i className={`bi ${liked ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'} fs-5`}></i>
+                        {likes > 0 && <span className="ms-1 fw-bold">{likes}</span>}
+                    </button>
+                    <button className={`btn btn-sm ${disliked ? 'text-danger' : 'text-muted'} border-0 p-1`} onClick={handleDislike} style={{transition: 'all 0.2s'}}>
+                        <i className={`bi ${disliked ? 'bi-hand-thumbs-down-fill' : 'bi-hand-thumbs-down'} fs-5`}></i>
+                    </button>
+                    <button className="btn btn-sm text-muted border-0 p-1" onClick={handleShare} title="Share" style={{transition: 'all 0.2s'}}>
+                        <i className="bi bi-share fs-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const ProjectGallery = ({ data, t }) => {
+    return (
+        <div className="row g-4">
+            {data && data.length > 0 ? data.map((item, idx) => (
+                <div className="col-md-4" key={idx}>
+                    <ProjectGalleryItem item={item} />
+                </div>
+            )) : (
+                <div className="col-12 text-center text-muted py-5">No gallery images available yet.</div>
+            )}
+        </div>
+    );
+};
+
 const Projects = ({ data, limit, onShowMore, t }) => {
     const displayData = limit && data.length > limit ? data.slice(0, limit) : data;
+    const marqueeData = [...displayData, ...displayData];
 
     return (
         <section id="projects" className="py-5 section-bg-1">
             <FadeInSection>
-                <div className="container py-4">
-                    <div className="text-center mb-5">
-                        <h2 className="section-title">{t.showcase}</h2>
+                <div className="container-fluid py-4 overflow-hidden">
+                    <div className="d-flex justify-content-between align-items-center mb-5 px-md-4">
+                        <h2 className="section-title mb-0 text-start"><i className="bi bi-briefcase me-2 text-primary"></i> {t.showcase}</h2>
+                        <button className="btn btn-primary shadow-sm" onClick={() => onShowMore('gallery')}>
+                            <i className="bi bi-images me-2"></i> {t.gallery || "Project Gallery"}
+                        </button>
                     </div>
-                    <div className="row g-4">
-                        {displayData.map((proj, index) => (
-                            <div className="col-md-4" key={index}>
-                                <div className="card h-100 overflow-hidden shadow-sm border-0">
-                                    <img src={proj.img || "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&q=80"} className="card-img-top" alt={proj.title} style={{ height: '200px', objectFit: 'cover' }} />
-                                    <div className="card-body d-flex flex-column">
-                                        <h5 className="card-title">{proj.title}</h5>
-                                        <p className="card-text text-muted small">{proj.desc}</p>
-                                        <div className="mt-auto mb-3">
-                                            {proj.tags && proj.tags.map((tag, i) => (
-                                                <span className="badge bg-light text-dark border me-2 mb-2" key={i}>{tag}</span>
-                                            ))}
+                    <div className="projects-marquee-container">
+                        <div className="projects-marquee">
+                            {marqueeData.map((proj, index) => (
+                                <div className="project-card-wrapper" key={index}>
+                                    <div className="card h-100 overflow-hidden shadow-sm border-0">
+                                        <img src={proj.img || "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&q=80"} className="card-img-top" alt={proj.title} style={{ height: '200px', objectFit: 'cover' }} />
+                                        <div className="card-body d-flex flex-column">
+                                            <h5 className="card-title">{proj.title}</h5>
+                                            <p className="card-text text-muted small">{proj.desc}</p>
+                                            <div className="mt-auto mb-3">
+                                                {proj.tags && proj.tags.map((tag, i) => (
+                                                    <span className="badge bg-light text-dark border me-2 mb-2" key={i}>{tag}</span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                     {limit && data.length > limit && (
                         <div className="text-center mt-5">
-                            <button className="btn btn-outline-primary" onClick={onShowMore}>{t.showMoreProj}</button>
+                            <button className="btn btn-outline-primary" onClick={() => onShowMore('projects')}>{t.showMoreProj}</button>
                         </div>
                     )}
                 </div>
@@ -648,7 +804,7 @@ const AcademicProjects = ({ data, limit, onShowMore, t }) => {
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.academicProjects}</h2>
+                        <h2 className="section-title"><i className="bi bi-mortarboard me-2 text-primary"></i> {t.academicProjects}</h2>
                         <p className="text-muted">{t.dirProj}</p>
                     </div>
 
@@ -699,7 +855,12 @@ const AcademicProjects = ({ data, limit, onShowMore, t }) => {
                                             </span>
                                         </div>
                                         <h5 className="card-title mb-3 text-dark">{proj.title}</h5>
-                                        <p className="card-text text-muted">{proj.desc}</p>
+                                        <p className="card-text text-muted mb-4">{proj.desc}</p>
+                                        {proj.reportUrl && (
+                                            <a href={proj.reportUrl} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-danger mt-auto" style={{ alignSelf: 'flex-start' }}>
+                                                <i className="bi bi-file-earmark-pdf me-2"></i> {t.viewReport || 'View PDF Report'}
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -728,7 +889,7 @@ const SupervisedPhd = ({ data, t }) => {
             <FadeInSection>
                 <div className="container py-4">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.phd}</h2>
+                        <h2 className="section-title"><i className="bi bi-person-badge me-2 text-primary"></i> {t.phd}</h2>
                         <p className="text-muted">{t.docCandidates}</p>
                     </div>
                     <div className="row g-4 justify-content-center">
@@ -769,7 +930,7 @@ const ScientificEquipments = ({ data, t }) => {
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.equip}</h2>
+                        <h2 className="section-title"><i className="bi bi-tools me-2 text-primary"></i> {t.equip}</h2>
                         <p className="text-muted">{t.tools}</p>
                     </div>
                     <div className="row g-4">
@@ -799,7 +960,7 @@ const EmbeddedBoards = ({ data, t }) => {
             <FadeInSection>
                 <div className="container py-4">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.boards}</h2>
+                        <h2 className="section-title"><i className="bi bi-motherboard me-2 text-primary"></i> {t.boards}</h2>
                         <p className="text-muted">{t.devBoards}</p>
                     </div>
                     <div className="row g-4">
@@ -829,7 +990,7 @@ const LearningAppsSection = ({ data, setCurrentApp, t }) => {
             <FadeInSection>
                 <div className="container py-4">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.learningApps}</h2>
+                        <h2 className="section-title"><i className="bi bi-laptop me-2 text-primary"></i> {t.learningApps}</h2>
                         <p className="text-muted">{t.interact}</p>
                     </div>
                     <div className="row g-4">
@@ -861,7 +1022,7 @@ const Contact = ({ data, t }) => {
             <FadeInSection>
                 <div className="container py-5">
                     <div className="text-center mb-5">
-                        <h2 className="section-title">{t.getInTouch}</h2>
+                        <h2 className="section-title"><i className="bi bi-envelope me-2 text-primary"></i> {t.getInTouch}</h2>
                     </div>
                     <div className="row">
                         <div className="col-lg-5 mb-5 mb-lg-0">
@@ -926,7 +1087,7 @@ const Contact = ({ data, t }) => {
     );
 };
 
-const SearchResultsView = ({ data, query, setViewingSection, t }) => {
+const SearchResultsView = ({ data, query, setViewingSection, setSelectedCourse, t }) => {
     const q = query.toLowerCase();
 
     // Very simple but effective full-text search across multiple sections
@@ -960,7 +1121,7 @@ const SearchResultsView = ({ data, query, setViewingSection, t }) => {
                             <h4 className="border-bottom pb-2 text-primary">{t.teaching}</h4>
                             <div className="row g-3 mt-2">
                                 {results.teaching.map((item, idx) => (
-                                    <div className="col-md-6 col-lg-3" key={idx}><CourseCard course={item} t={t} /></div>
+                                    <div className="col-md-6 col-lg-3" key={idx}><CourseCard course={item} onSelectCourse={(course) => { setSelectedCourse(course); setViewingSection('courseMaterials'); }} t={t} /></div>
                                 ))}
                             </div>
                         </div>
@@ -1030,6 +1191,7 @@ const App = () => {
     const [data, setData] = useState(null);
     const [currentApp, setCurrentApp] = useState(null);
     const [viewingSection, setViewingSection] = useState(null);
+    const [selectedCourse, setSelectedCourse] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [lang, setLang] = useState('en');
 
@@ -1077,7 +1239,7 @@ const App = () => {
     }
 
     const renderFullSection = () => {
-        if (viewingSection === 'search') return <SearchResultsView data={data} query={searchQuery} setViewingSection={setViewingSection} t={t} />;
+        if (viewingSection === 'search') return <SearchResultsView data={data} query={searchQuery} setViewingSection={setViewingSection} setSelectedCourse={setSelectedCourse} t={t} />;
 
         return (
             <div className="container py-5 mt-5">
@@ -1087,9 +1249,11 @@ const App = () => {
                         <i className="bi bi-arrow-left me-2"></i> {t.back}
                     </button>
                 </div>
-                {viewingSection === 'teaching' && <Teaching data={data.teaching} t={t} />}
+                {viewingSection === 'teaching' && <Teaching data={data.teaching} t={t} onSelectCourse={(course) => { setSelectedCourse(course); setViewingSection('courseMaterials'); }} />}
+                {viewingSection === 'courseMaterials' && <CourseMaterialsView course={selectedCourse} onBack={() => setViewingSection('teaching')} t={t} />}
                 {viewingSection === 'publications' && <Publications data={data.publications} socialLinks={data.contact.social} t={t} />}
                 {viewingSection === 'projects' && <Projects data={data.projects} t={t} />}
+                {viewingSection === 'gallery' && <ProjectGallery data={data.gallery || []} t={t} />}
                 {viewingSection === 'academicProjects' && <AcademicProjects data={data.academicProjects} t={t} />}
             </div>
         );
@@ -1131,15 +1295,15 @@ const App = () => {
                     renderFullSection()
                 ) : (
                     <>
-                        <Hero data={data.hero} t={t} />
+                        <Hero data={data} t={t} />
                         <SupervisedPhd data={data.supervisedPhd} t={t} />
                         <About data={data.about} t={t} />
-                        <Teaching data={data.teaching} limit={4} onShowMore={() => setViewingSection('teaching')} t={t} />
+                        <Teaching data={data.teaching} limit={4} onShowMore={() => setViewingSection('teaching')} onSelectCourse={(course) => { setSelectedCourse(course); setViewingSection('courseMaterials'); }} t={t} />
                         <Research data={data.research} socialLinks={data.contact.social} t={t} />
                         <ScientificEquipments data={data.scientificEquipments} t={t} />
                         <EmbeddedBoards data={data.embeddedBoards} t={t} />
                         <Publications data={data.publications} socialLinks={data.contact.social} limit={4} onShowMore={() => setViewingSection('publications')} t={t} />
-                        <Projects data={data.projects} limit={3} onShowMore={() => setViewingSection('projects')} t={t} />
+                        <Projects data={data.projects} limit={3} onShowMore={(section) => section === 'gallery' ? setViewingSection('gallery') : setViewingSection('projects')} t={t} />
                         <AcademicProjects data={data.academicProjects} limit={4} onShowMore={() => setViewingSection('academicProjects')} t={t} />
                         <LearningAppsSection data={data.learningApplications} setCurrentApp={setCurrentApp} t={t} />
                         <Contact data={data.contact} t={t} />

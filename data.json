@@ -76,56 +76,329 @@
     ],
     "hIndex": "14",
     "publicationsCount": "54",
-    "totalCitations": "570+"
+    "totalCitations": "570+",
+    "patents": "1"
   },
   "publications": [
     {
-      "title": "Real-time Implementation of Advanced Control Strategies on FPGA for Industrial Drives",
-      "authors": "A. Gaga, J. Doe, S. Smith",
-      "journal": "IEEE Transactions on Industrial Electronics",
-      "year": "2025",
-      "link": "#",
+      "title": "Embedded Hardware/Software CAN Node Design for Engineering and Research in the Automotive Application Field",
+      "authors": "Gaga A., Mehdaoui Y., El Ouahdani S., El Hadadi B., Errahimi F.",
+      "journal": "International Journal on Engineering Applications",
+      "year": "2022",
+      "link": "https://doi.org/10.15866/irea.v10i2.20813",
       "quartile": "Q1"
     },
     {
-      "title": "A Novel Web-Based Simulator for Digital Logic Education",
-      "authors": "A. Gaga, M. Johnson",
-      "journal": "Journal of Engineering Education",
+      "title": "Performance optimization of symmetrical multi-level boost converter using hybrid MPPT-ANN for solar energy applications",
+      "authors": "El Haji I., Megrini M., Kchikach M., Sahbani S., Gaga A., El Hasnaoui A.",
+      "journal": "Results in Engineering",
+      "year": "2025",
+      "link": "10.1016/j.rineng.2025.104729",
+      "quartile": "Q1"
+    },
+    {
+      "title": "The efficiency of the CORDIC Operator in the MIMO MC-CDMA receiver",
+      "authors": "Mehdaoui Y., Malaoui A., Gaga A., El Alami R., Mrabti M.",
+      "journal": "Mathematical Modelling of Engineering Problems",
+      "year": "2019",
+      "link": "10.18280/mmep.060113",
+      "quartile": "Q2"
+    },
+    {
+      "title": "Design and implementation of MPPT solar system based on the enhanced P&O algorithm using Labview",
+      "authors": "Gaga A., Errahimi F., Es-Sbai N.",
+      "journal": "International Renewable and Sustainable Energy Conference, IRSEC 2014",
+      "year": "2014",
+      "link": "10.1109/IRSEC.2014.7059786",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Design and PIL Implementation of Fuzzy Logic-based MPPT Control for Symmetrical Multilevel Boost Converter",
+      "authors": "Haji I.E., Meriem M., Kchikach M., Ahmed G., El Hasnaoui A.",
+      "journal": "WSEAS Transactions on Power Systems",
       "year": "2024",
-      "link": "#",
-      "quartile": "Q2"
+      "link": "10.37394/232016.2024.19.33",
+      "quartile": "Q1"
     },
     {
-      "title": "Optimization of VHDL Architectures for High-Speed Signal Processing",
-      "authors": "A. Gaga",
-      "journal": "International Journal of Embedded Systems",
+      "title": "Sensored Brushless DC Motor Control Based on an Artificial Neural Network Controller",
+      "authors": "Megrini M., Gaga A., Mehdaoui Y.",
+      "journal": "Lecture Notes in Networks and Systems",
+      "year": "2024",
+      "link": "10.1007/978-3-031-48465-0_7",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Meriem M., Ahmed G., Youness M.",
+      "authors": "PID Versus Fuzzy Logic Controller Speed Control Comparison of DC Motor Using QUANSER QNET 2.0",
+      "journal": "Lecture Notes in Networks and Systems",
+      "year": "2024",
+      "link": "10.1007/978-3-031-48465-0_22",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Design and Simulation of an Intelligent Grid-Connected MPPT Inverter with Battery Storage Using ANN Algorithm",
+      "authors": "Ahessab H., Hakam Y., Gaga A., EL Hadadi B.",
+      "journal": "Advances in Science, Technology and Innovation",
+      "year": "2024",
+      "link": "10.1007/978-3-031-49772-8_29",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Renewable Energy in Smart Grid: Photovoltaic Power Monitoring System Based on Machine Learning Using an Open-Source IoT Platform",
+      "authors": "Hakam Y., Ahessab H., Gaga A., Hadadi B.E.",
+      "journal": "Lecture Notes in Networks and Systems",
       "year": "2023",
-      "link": "#",
+      "link": "10.1007/978-3-031-29857-8_24",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Hybrid ANN–GWO MPPT with MPC-based inverter control for efficient EV charging under partial shading conditions",
+      "authors": "Hakam Y., Ahessab H., Tabaa M., ELHadadi B., Gaga A.",
+      "journal": "Science Progress",
+      "year": "2025",
+      "link": "10.1177/00368504251331835",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Processor in the loop implementation of artificial neural network controller for BLDC motor speed control",
+      "authors": "Megrini M., Gaga A., Mehdaoui Y.",
+      "journal": "Results in Engineering",
+      "year": "2024",
+      "link": "10.1016/j.rineng.2024.102422",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Particle Swarm Optimization with PID Controller for BLDC Motor Speed Control",
+      "authors": "Megrini M., Gaga A., Mehdaoui Y.",
+      "journal": "Lecture Notes in Networks and Systems",
+      "year": "2024",
+      "link": "10.1007/978-3-031-68650-4_42",
+      "quartile": "Q3"
+    },
+    {
+      "title": "low cost PID controller implementation of SEPIC Converter using 8-bits Microcontroller Target for Photovoltaic Applications",
+      "authors": "Gaga A., Ouanan H., Mehdaoui Y., El Hadadi B.",
+      "journal": "Journal of Electrical Systems",
+      "year": "2022",
+      "link": "",
       "quartile": "Q2"
     },
     {
-      "title": "fffff",
-      "authors": "dfgdfg",
-      "journal": "gdtgtg",
-      "year": "2343",
-      "link": "345435435435",
-      "quartile": "q2"
+      "title": "Review of Electric Vehicle Traction Motors, Control Systems, and Various Implementation Cards",
+      "authors": "Megrini M., Gaga A., Mehdaoui Y.",
+      "journal": "Journal of Operation and Automation in Power Engineering",
+      "year": "2025",
+      "link": "10.22098/joape.2024.13967.2077",
+      "quartile": "Q1"
     },
     {
-      "title": "lsruhtngjrsrtg",
-      "authors": "ergrtgstrg",
-      "journal": "sjfgnrsthgnjkr",
-      "year": "rejgfrsjgvbtrhg",
-      "link": "fgkbmb",
-      "quartile": "q3"
+      "title": "Design and simulation of a 5 KW solar-powered hybrid electric vehicle charging station with a ANN–Kalman filter MPPT and MPC-based inverter control for reduced THD",
+      "authors": "Hakam Y., Ahessab H., Gaga A., Tabaa M., El Hadadi B.",
+      "journal": "Scientific African",
+      "year": "2025",
+      "link": "10.1016/j.sciaf.2025.e02563",
+      "quartile": "Q1"
     },
     {
-      "title": "fhvlirhgnjsn",
-      "authors": "rkgtrgnbd",
-      "journal": "gtrngbtr",
-      "year": "aerkgnekjr",
-      "link": "b rtbsrtjgn",
-      "quartile": "trgnrjth"
+      "title": "Enhancing Electric Vehicle Charger Performance with Synchronous Boost and Model Predictive Control for Vehicle-to-Grid Integration",
+      "authors": "Hakam Y., Gaga A., Tabaa M., El hadadi B.",
+      "journal": "Energies",
+      "year": "2024",
+      "link": "10.3390/en17071787",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Optimizing Photovoltaic System Efficiency Through a Kalman Filter Driven Approach for MPPT in Partial Shading Conditions",
+      "authors": "Hajar A., Ahmed G., Youness H., Benachir E.H.",
+      "journal": "4th International Conference on Innovative Research in Applied Science, Engineering and Technology, IRASET",
+      "year": "2024",
+      "link": "10.1109/IRASET60544.2024.10549347",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Design and realization of an autonomous solar system",
+      "authors": "Gaga A., Diouri O., Es-Sbai N., Errahimi F.",
+      "journal": "IOP Conference Series: Materials Science and Engineering",
+      "year": "2017",
+      "link": "10.1088/1757-899X/186/1/012031",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Design of an energy management system for an autonomous hybrid micro-grid based on Labview IDE",
+      "authors": "Cheddadi Y., Gaga A., Errahimi F., Sbai N.E.",
+      "journal": "IEEE International Renewable and Sustainable Energy Conference, IRSEC 2015",
+      "year": "2016",
+      "link": "10.1109/IRSEC.2015.7454965",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Weeds detection efficiency through different convolutional neural networks technology",
+      "authors": "Tannouche A., Gaga A., Boutalline M., Belhouideg S.",
+      "journal": "International Journal of Electrical and Computer Engineering",
+      "year": "2022",
+      "link": "10.11591/ijece.v12i1.pp1048-1055",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Exploring the state of electric vehicles: An evidence-based examination of current and future electric vehicle technologies and smart charging stations",
+      "authors": "Hakam Y., Gaga A., Elhadadi B.",
+      "journal": "Energy Reports",
+      "year": "2024",
+      "link": "10.1016/j.egyr.2024.04.002",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Conception and Implementation of an IoT System for Remote Practical Works in Open Access University’s Electronic Laboratories",
+      "authors": "Taj A.M., Sombria J.C., Gaga A., Abouhilal A., Malaoui A.",
+      "journal": "International journal of online and biomedical engineering",
+      "year": "2021",
+      "link": "10.3991/ijoe.v17i02.19755",
+      "quartile": "Q2"
+    },
+    {
+      "title": "Design and simulation of a novel cascaded transformer multilevel inverter topology for photovoltaic system",
+      "authors": "Diouri O., Gaga A., Es-Sbai N., Errahimi F.",
+      "journal": "IEEE International Renewable and Sustainable Energy Conference, IRSEC 2015",
+      "year": "2016",
+      "link": "10.1109/IRSEC.2015.7454957",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Speed Control of Induction Motor using Fuzzy Logic Controller and DTC Strategy",
+      "authors": "Meriem M., Ahmed G., Youness M.",
+      "journal": "International Conference on Innovative Research in Applied Science, Engineering and Technology, IRASET 2024",
+      "year": "2024",
+      "link": "10.1109/IRASET60544.2024.10548936",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Model Predictive Control for Enhanced Inverter Management in Electric Vehicle Charging",
+      "authors": "Youness H., Ahmed G., Mohamed T., Benachir E.H.",
+      "journal": "4th International Conference on Innovative Research in Applied Science, Engineering and Technology, IRASET 2024",
+      "year": "2024",
+      "link": "10.1109/IRASET60544.2024.10549321",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Development of Deep Learning-Based Facial Recognition System",
+      "authors": "Ouanan H., Gaga A., Diouri O., Ouanan M., Aksasse B.",
+      "journal": "Advances in Intelligent Systems and Computing",
+      "year": "2020",
+      "link": "10.1007/978-3-030-36677-3_6",
+      "quartile": "Q2"
+    },
+    {
+      "title": "Battery state of charge estimation using an adaptive unscented Kalman filter for photovoltaics applications",
+      "authors": "Gaga A., Benssassi H., Errahimi F., Sbai N.E.",
+      "journal": "International Review of Automatic Control",
+      "year": "2017",
+      "link": "10.15866/ireaco.v10i4.11393",
+      "quartile": "Q2"
+    },
+    {
+      "title": "ANN-fuzzy Hybrid Control Strategy for MPPT of Grid-connected PV: System with Battery Storage under Fast-changing Atmospheric Condition",
+      "authors": "Ahessab H., Hakam Y., Gaga A., Elhaddadi B.",
+      "journal": "Recent Advances in Electrical and Electronic Engineering",
+      "year": "2025",
+      "link": "10.2174/0123520965262688231128053950",
+      "quartile": "Q1"
+    },
+    {
+      "title": "A Comparative Study of P&O and Fuzzy Logic MPPT Algorithms for a Photovoltaic Grid Connected Inverter System",
+      "authors": "Ahessab H., Hakam Y., Gaga A., El Hadadi B.",
+      "journal": "Lecture Notes in Networks and Systems",
+      "year": "2023",
+      "link": "10.1007/978-3-031-29857-8_65",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Enhanced MPPT controller for partially shaded PV systems using a modified PSO algorithm and intelligent artificial neural network, with DSP F28379D implementation",
+      "authors": "Ahessab H., Gaga A., Elhadadi B.",
+      "journal": "Science Progress",
+      "year": "2024",
+      "link": "10.1177/00368504241290377",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Design and PIL Test of High Performance MPPT Controller Based on P&O-Backstepping Applied to DC-DC Converter",
+      "authors": "Diouri O., Gaga A., Senhaji S., Jamil M.O.",
+      "journal": "Journal of Robotics and Control (JRC)",
+      "year": "2022",
+      "link": "10.18196/jrc.v3i4.15184",
+      "quartile": "Q2"
+    },
+    {
+      "title": "Smart Grid Integration: PID-Controlled Offboard Electric Vehicle Charger for V2G and G2V Interactions",
+      "authors": "Hakam Y., Gaga A., Tabaa M., Hadadi B.E.",
+      "journal": "Lecture Notes in Networks and Systems",
+      "year": "2024",
+      "link": "10.1007/978-3-031-68660-3_42",
+      "quartile": "Q4"
+    },
+    {
+      "title": "Methods for estimating lithium-ion battery state of charge for use in electric vehicles: A review",
+      "authors": "Gaga A., Tannouche A., Mehdaoui Y., El Hadadi B.",
+      "journal": "Energy Harvesting and Systems",
+      "year": "2022",
+      "link": "10.1515/ehs-2021-0039",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Machine Learning-based Smart Irrigation Monitoring System for Agriculture Applications Using Free and Low-Cost IoT Platform",
+      "authors": "Youness H., Ahmed G., Haddadi B.E.",
+      "journal": "International Conference on Microelectronics, ICM 2022",
+      "year": "2022",
+      "link": "10.1109/ICM56065.2022.10005419",
+      "quartile": "Q3"
+    },
+    {
+      "title": "Enhancement of Field Oriented Control for Permanent Magnetic Synchronous Motor using Ant Colony Optimization",
+      "authors": "Megrini M., Gaga A., Mehdaoui Y.",
+      "journal": "WSEAS Transactions on Power Systems",
+      "year": "2024",
+      "link": "10.37394/232016.2024.19.3",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Control of single phase inverter using back-stepping in stand-alone mode",
+      "authors": "Diouri O., Es-Sbai N., Errahimi F., Gaga A., Alaoui C.",
+      "journal": "International Conference on Wireless Technologies, Embedded and Intelligent Systems, WITS 2019",
+      "year": "2019",
+      "link": "10.1109/WITS.2019.8723761",
+      "quartile": "Q4"
+    },
+    {
+      "title": "High efficiency DC–DC converter for renewable energy integration and energy storage applications: A review of topologies and control strategies",
+      "authors": "Mezouari M., Megrini M., Gaga A.",
+      "journal": "Control Engineering Practice",
+      "year": "2025",
+      "link": "10.1016/j.conengprac.2025.106371",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Analysis of the impacts of electric vehicle chargers on a medium voltage distribution network in Casablanca City",
+      "authors": "Rhannouch Y., Saadaoui A., Gaga A.",
+      "journal": "e-Prime - Advances in Electrical Engineering, Electronics and Energy",
+      "year": "2025",
+      "link": "10.1016/j.prime.2024.100879",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Revolutionizing photovoltaic power: An enhanced Grey Wolf Optimizer for ultra-efficient MPPT under partial shading conditions",
+      "authors": "Ahessab H., Gaga A., EL Hadadi B.",
+      "journal": "Scientific African",
+      "year": "2025",
+      "link": "10.1016/j.sciaf.2025.e02586",
+      "quartile": "Q1"
+    },
+    {
+      "title": "Improving the Effectiveness of Electric Vehicle Charging Infrastructure Within a Smart City Using Artificial Neural Networks (ANN) and the Internet of Vehicles (IoV)",
+      "authors": "Youness H., Mohamed T., Ahmed G., Hajar A., Benachir E.L.H.",
+      "journal": "Proceedings of the International Conference on Microelectronics, ICM",
+      "year": "2024",
+      "link": "10.1109/ICM63406.2024.10815842",
+      "quartile": "Q4"
     }
   ],
   "projects": [
@@ -162,34 +435,151 @@
   ],
   "academicProjects": [
     {
-      "title": "Smart Home Automation System",
+      "title": "Conception Et Réalisation D’une Montre POV Intelligente A Base D’un Microcontrôleur",
+      "level": "Licence",
+      "year": "2019-06-13",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Implémentation D’un Régulateur PID Pour Le Contrôle D’une Chambre Thermique",
+      "level": "Licence",
+      "year": "2019-07-04",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Réalisation D’un Fréquencemètre Et Détecteur De Phase Numérique A Base D’un Système A Microcontrôleur",
+      "level": "Licence",
+      "year": "2020-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Réalisation D’un Système Radar 360 Degré A Base D’un Système Multi-Capteurs Pour Les Applications De Navigation Autonome",
+      "level": "Licence",
+      "year": "2021-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Etude Comparatif Des Différentes Technologies De Transmission Sans Fil Utilisées Dans L’IOT : « Application Dans La Robotique »",
+      "level": "Licence",
+      "year": "2021-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Etude D’un Convertisseur Statique De Fréquence Et Etablissement D’un Plan De Maintenance",
+      "level": "Licence",
+      "year": "2019-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Réalisation D’une Chaine De Puissance Pour Le Contrôle D’un Système Thermique",
+      "level": "Licence",
+      "year": "2019-07-03",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Réalisation D’un Analyseur De Qualité D’onduleur Photovoltaïque Embarque « THD Analyser »",
+      "level": "Licence",
+      "year": "2020-07-15",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Simulation Sous PROTEUS D’un Système Embarque De Mesure De Type Anémomètre Pour Les Application De Commande Des Eoliennes",
+      "level": "Licence",
+      "year": "2020-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Réalisation Et Implémentation D’un Système Suiveur De Soleil Dans Une Installation De Pompage",
+      "level": "Licence",
+      "year": "2021-07-29",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Etude Et Dimensionnement D’un Système De Pompage Photovoltaïque",
+      "level": "Licence",
+      "year": "2021-07-09",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et réalisation D’un Onduleur Photovoltaïque A Commande SPWM Contrôle Par Un Système Embarque",
       "level": "Master",
-      "year": "2026-05-06",
-      "desc": "Design and implementation of an IoT based smart home system using ESP32."
+      "year": "2019-07-14",
+      "desc": "",
+      "reportUrl": ""
     },
     {
-      "title": "niuhuhuh",
-      "level": "licence",
-      "year": "2026-05-22",
-      "desc": "mplementation of an IoT"
-    },
-    {
-      "title": "kjdgndfgnkdfjgndfg",
+      "title": "Etude Et Développement D’un Capteur Intelligent Sans Fil Pour La Supervision Des Stations Solaire Isolés",
       "level": "Master",
-      "year": "2023",
-      "desc": "arhferiuvndfhnaernvdjfvn"
+      "year": "2019-04-08",
+      "desc": "",
+      "reportUrl": ""
     },
     {
-      "title": "dsjnerghnlszdfnvjfd",
+      "title": "Dimensionnement Et Réalisation D’une Alimentation A Découpage A Commande Numérique De Haute Précision Contrôler Par Un Régulateur PID",
       "level": "Master",
-      "year": "2021",
-      "desc": "hdbfaerhtfjregn,srjgn"
+      "year": "2020-07-08",
+      "desc": "",
+      "reportUrl": ""
     },
     {
-      "title": "hggkygh",
-      "level": "Engineer",
-      "year": "2026-05-15",
-      "desc": ""
+      "title": "Conception Et Réalisation D’un Compteur D’énergie Intelligent A Base D’un Microcontrôleur 32-Bits Pour Les Applications SMART GRID",
+      "level": "Master",
+      "year": "2020-07-01",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Réalisation D’un Contrôleur Embarque Multi-Protocoles A Base De Microcontrôleur PIC18",
+      "level": "Master",
+      "year": "2020-03-06",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Optimisation Des Performances De Contrôle D’un Système PV Par La Méthode MPPT",
+      "level": "Master",
+      "year": "2021-07-02",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Conception Et Implémentation D’un Algorithme FOC Sous Architecture ARM32 Bits Pour Les Applications Voitures Electriques",
+      "level": "Master",
+      "year": "2021-07-03",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Modélisation Et Commande Intelligente Des Convertisseurs DC-DC Par La Logique Floue",
+      "level": "Master",
+      "year": "2021-07-11",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Etude Et Conception Hardware/Software D’un Système D’intercommunication CAN Multi-Nœud : Vers Une Application Automobile",
+      "level": "Master",
+      "year": "2021-07-25",
+      "desc": "",
+      "reportUrl": ""
+    },
+    {
+      "title": "Design Et Implémentation D’un Algorithme SVPWM Sous Un Microcontrôleur Avancé. Application : Contrôle Des Moteurs BLDC D’un Robot Autonome",
+      "level": "Master",
+      "year": "2021-07-09",
+      "desc": "",
+      "reportUrl": ""
     }
   ],
   "supervisedPhd": [
@@ -254,5 +644,19 @@
       "scopus": "https://www.scopus.com/hirsch/author.uri?accessor=authorProfile&auidList=56582241500&origin=AuthorProfile&display=hIndex",
       "googleScholar": "https://scholar.google.com/citations?user=BQIYKDgAAAAJ&hl=fr"
     }
-  }
+  },
+  "gallery": [
+    {
+      "title": "ysdbfdg",
+      "img": "uploads/1778608672368-LDR_Empirique.bmp"
+    },
+    {
+      "title": "drgrgggrg",
+      "img": "uploads/1778608687039-1.jpg"
+    },
+    {
+      "title": "dgnrgnbrtg",
+      "img": "uploads/1778608704672-FOUR GAGA.jpeg"
+    }
+  ]
 }

@@ -112,6 +112,94 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
   100% { transform: scale(1.05); opacity: 0.2; }
 }
 
+/* Stats Marquee in Hero */
+.stats-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(37, 99, 235, 0.05);
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  padding: 15px 0; /* Increased padding */
+}
+
+[data-bs-theme="dark"] .stats-marquee-container {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.stats-marquee {
+  display: flex;
+  animation: scrollMarquee 35s linear infinite;
+  gap: 6rem; /* Increased gap */
+  padding: 0 3rem; /* Increased padding */
+}
+
+.stats-marquee:hover {
+  animation-play-state: paused;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Increased gap inside items */
+}
+
+.stat-item i {
+  font-size: 1.75rem !important; /* Larger icon */
+}
+
+.stat-value {
+  font-size: 1.5rem !important; /* Larger number */
+}
+
+.stat-label {
+  font-size: 1.1rem !important; /* Larger label */
+}
+
+[data-bs-theme="dark"] .stat-value {
+  color: #f8fafc !important;
+}
+[data-bs-theme="dark"] .stat-label {
+  color: #cbd5e1 !important;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Projects Marquee */
+.projects-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.projects-marquee {
+  display: flex;
+  animation: scrollProjects 40s linear infinite;
+  gap: 2rem;
+  width: max-content;
+  padding: 0 1rem;
+}
+
+.projects-marquee:hover {
+  animation-play-state: paused;
+}
+
+.project-card-wrapper {
+  width: 350px;
+  flex-shrink: 0;
+}
+
+@keyframes scrollProjects {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 1rem)); }
+}
+
+
+
 /* Cards & Components */
 .card {
   background-color: var(--surface-color);

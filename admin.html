@@ -43,6 +43,7 @@
 
         const AdminDashboard = () => {
             const [data, setData] = useState(null);
+            const confirmDelete = (action) => { if(window.confirm('Are you sure you want to delete this item?')) action(); };
             const [loading, setLoading] = useState(true);
             const [saving, setSaving] = useState(false);
             const [activeTab, setActiveTab] = useState('hero');
@@ -58,6 +59,7 @@
                         if (!fetchedData.supervisedPhd) fetchedData.supervisedPhd = [];
                         if (!fetchedData.scientificEquipments) fetchedData.scientificEquipments = [];
                         if (!fetchedData.embeddedBoards) fetchedData.embeddedBoards = [];
+                        if (!fetchedData.gallery) fetchedData.gallery = [];
                         if (!fetchedData.hero.imgUrl) fetchedData.hero.imgUrl = '';
                         fetchedData.teaching.forEach(t => { if (!t.materials) t.materials = []; });
                         
@@ -123,6 +125,7 @@
                             <a href="#" className={activeTab === 'research' ? 'active' : ''} onClick={() => setActiveTab('research')}><i className="bi bi-graph-up me-2"></i> Research</a>
                             <a href="#" className={activeTab === 'publications' ? 'active' : ''} onClick={() => setActiveTab('publications')}><i className="bi bi-journal me-2"></i> Publications</a>
                             <a href="#" className={activeTab === 'projects' ? 'active' : ''} onClick={() => setActiveTab('projects')}><i className="bi bi-briefcase me-2"></i> Showcase Projects</a>
+                            <a href="#" className={activeTab === 'gallery' ? 'active' : ''} onClick={() => setActiveTab('gallery')}><i className="bi bi-images me-2"></i> Project Gallery</a>
                             <a href="#" className={activeTab === 'academicProjects' ? 'active' : ''} onClick={() => setActiveTab('academicProjects')}><i className="bi bi-mortarboard me-2"></i> Academic Projects</a>
                             <a href="#" className={activeTab === 'supervisedPhd' ? 'active' : ''} onClick={() => setActiveTab('supervisedPhd')}><i className="bi bi-person-badge me-2"></i> Supervised PhD</a>
                             <a href="#" className={activeTab === 'scientificEquipments' ? 'active' : ''} onClick={() => setActiveTab('scientificEquipments')}><i className="bi bi-tools me-2"></i> Equipments</a>
@@ -212,10 +215,10 @@
                                                     }} placeholder="Level (0-100)" />
                                                 </div>
                                                 <div className="col-md-2">
-                                                    <button className="btn btn-danger w-100" onClick={() => {
+                                                    <button className="btn btn-danger w-100" onClick={() => confirmDelete(() => {
                                                         const newSkills = data.about.skills.filter((_, i) => i !== idx);
                                                         setData({...data, about: {...data.about, skills: newSkills}});
-                                                    }}><i className="bi bi-trash"></i></button>
+                                                    })}><i className="bi bi-trash"></i></button>
                                                 </div>
                                             </div>
                                         ))}
@@ -266,11 +269,11 @@
                                                                 if (e.target.files[0]) handleUpload(e.target.files[0], ['teaching', idx, 'materials', mIdx, 'url']);
                                                             }} />
                                                             {mat.url && <a href={mat.url} target="_blank" className="btn btn-sm btn-outline-secondary"><i className="bi bi-eye"></i></a>}
-                                                            <button className="btn btn-sm btn-danger" onClick={() => {
+                                                            <button className="btn btn-sm btn-danger" onClick={() => confirmDelete(() => {
                                                                 const newTeaching = [...data.teaching];
                                                                 newTeaching[idx].materials = newTeaching[idx].materials.filter((_, i) => i !== mIdx);
                                                                 setData({...data, teaching: newTeaching});
-                                                            }}><i className="bi bi-trash"></i></button>
+                                                            })}><i className="bi bi-trash"></i></button>
                                                         </div>
                                                     ))}
                                                     <button className="btn btn-sm btn-outline-success mt-1" onClick={() => {
@@ -281,9 +284,9 @@
                                                     }}><i className="bi bi-plus"></i> Add Document</button>
                                                 </div>
 
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newTeaching = data.teaching.filter((_, i) => i !== idx); setData({...data, teaching: newTeaching});
-                                                }}><i className="bi bi-trash"></i> Remove Course</button>
+                                                })}><i className="bi bi-trash"></i> Remove Course</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
@@ -320,10 +323,10 @@
                                                     newInterests[idx] = e.target.value;
                                                     setData({...data, research: {...data.research, interests: newInterests}});
                                                 }} />
-                                                <button className="btn btn-danger" onClick={() => {
+                                                <button className="btn btn-danger" onClick={() => confirmDelete(() => {
                                                     const newInterests = data.research.interests.filter((_, i) => i !== idx);
                                                     setData({...data, research: {...data.research, interests: newInterests}});
-                                                }}><i className="bi bi-trash"></i></button>
+                                                })}><i className="bi bi-trash"></i></button>
                                             </div>
                                         ))}
                                         <button className="btn btn-sm btn-success mt-2" onClick={() => {
@@ -377,9 +380,9 @@
                                                         }} />
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newPubs = data.publications.filter((_, i) => i !== idx); setData({...data, publications: newPubs});
-                                                }}><i className="bi bi-trash"></i> Remove Publication</button>
+                                                })}><i className="bi bi-trash"></i> Remove Publication</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
@@ -427,14 +430,52 @@
                                                         {proj.img && <img src={proj.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newProj = data.projects.filter((_, i) => i !== idx); setData({...data, projects: newProj});
-                                                }}><i className="bi bi-trash"></i> Remove Project</button>
+                                                })}><i className="bi bi-trash"></i> Remove Project</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
                                             setData({...data, projects: [...data.projects, {title: '', desc: '', img: '', tags: []}]});
                                         }}><i className="bi bi-plus"></i> Add Project</button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'gallery' && (
+                                <div className="card">
+                                    <div className="card-header">Project Gallery Images</div>
+                                    <div className="card-body">
+                                        {data.gallery.map((item, idx) => (
+                                            <div className="border p-3 mb-3 rounded shadow-sm bg-light" key={idx}>
+                                                <div className="row g-2">
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Title (optional)</label>
+                                                        <input type="text" className="form-control" value={item.title || ''} onChange={e => {
+                                                            const newGal = [...data.gallery]; newGal[idx].title = e.target.value; setData({...data, gallery: newGal});
+                                                        }} />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <label className="form-label fw-bold">Image URL</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={item.img || item.url || ''} onChange={e => {
+                                                                const newGal = [...data.gallery]; newGal[idx].img = e.target.value; setData({...data, gallery: newGal});
+                                                            }} />
+                                                            <input type="file" className="form-control w-auto" accept="image/*" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['gallery', idx, 'img']);
+                                                            }} />
+                                                        </div>
+                                                        {(item.img || item.url) && <img src={item.img || item.url} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
+                                                    </div>
+                                                </div>
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
+                                                    const newGal = data.gallery.filter((_, i) => i !== idx); setData({...data, gallery: newGal});
+                                                })}><i className="bi bi-trash"></i> Remove Image</button>
+                                            </div>
+                                        ))}
+                                        <button className="btn btn-success" onClick={() => {
+                                            setData({...data, gallery: [...data.gallery, {title: '', img: ''}]});
+                                        }}><i className="bi bi-plus"></i> Add Gallery Image</button>
                                     </div>
                                 </div>
                             )}
@@ -474,14 +515,26 @@
                                                             const newProj = [...data.academicProjects]; newProj[idx].desc = e.target.value; setData({...data, academicProjects: newProj});
                                                         }}></textarea>
                                                     </div>
+                                                    <div className="col-12 mt-3">
+                                                        <label className="form-label fw-bold">Project Report (PDF)</label>
+                                                        <div className="d-flex gap-2">
+                                                            <input type="text" className="form-control" value={proj.reportUrl || ''} onChange={e => {
+                                                                const newProj = [...data.academicProjects]; newProj[idx].reportUrl = e.target.value; setData({...data, academicProjects: newProj});
+                                                            }} placeholder="URL to PDF report" />
+                                                            <input type="file" className="form-control w-auto" accept="application/pdf" onChange={e => {
+                                                                if (e.target.files[0]) handleUpload(e.target.files[0], ['academicProjects', idx, 'reportUrl']);
+                                                            }} />
+                                                        </div>
+                                                        {proj.reportUrl && <a href={proj.reportUrl} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-secondary mt-2"><i className="bi bi-file-earmark-pdf text-danger me-1"></i> View Current Report</a>}
+                                                    </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newProj = data.academicProjects.filter((_, i) => i !== idx); setData({...data, academicProjects: newProj});
-                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                                })}><i className="bi bi-trash"></i> Remove</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
-                                            setData({...data, academicProjects: [...data.academicProjects, {title: '', level: 'Master', year: '', desc: ''}]});
+                                            setData({...data, academicProjects: [...data.academicProjects, {title: '', level: 'Master', year: '', desc: '', reportUrl: ''}]});
                                         }}><i className="bi bi-plus"></i> Add Academic Project</button>
                                     </div>
                                 </div>
@@ -531,9 +584,9 @@
                                                         {phd.img && <img src={phd.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newPhd = data.supervisedPhd.filter((_, i) => i !== idx); setData({...data, supervisedPhd: newPhd});
-                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                                })}><i className="bi bi-trash"></i> Remove</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
@@ -581,9 +634,9 @@
                                                         {eq.img && <img src={eq.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newEq = data.scientificEquipments.filter((_, i) => i !== idx); setData({...data, scientificEquipments: newEq});
-                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                                })}><i className="bi bi-trash"></i> Remove</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
@@ -631,9 +684,9 @@
                                                         {board.img && <img src={board.img} alt="Preview" className="mt-2 rounded" style={{maxHeight: '100px'}} />}
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newBd = data.embeddedBoards.filter((_, i) => i !== idx); setData({...data, embeddedBoards: newBd});
-                                                }}><i className="bi bi-trash"></i> Remove</button>
+                                                })}><i className="bi bi-trash"></i> Remove</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
@@ -666,9 +719,9 @@
                                                         }}></textarea>
                                                     </div>
                                                 </div>
-                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => {
+                                                <button className="btn btn-sm btn-danger mt-3" onClick={() => confirmDelete(() => {
                                                     const newApps = data.learningApplications.filter((_, i) => i !== idx); setData({...data, learningApplications: newApps});
-                                                }}><i className="bi bi-trash"></i> Remove Application</button>
+                                                })}><i className="bi bi-trash"></i> Remove Application</button>
                                             </div>
                                         ))}
                                         <button className="btn btn-success" onClick={() => {
